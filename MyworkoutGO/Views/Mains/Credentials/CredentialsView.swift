@@ -16,18 +16,15 @@ import SwiftUI
 ///
 struct CredentialsView: View {
 
-  @State var logoText = "Start by entering your email address."
-  @State var buttonName = "Next"
-
   var body: some View {
     VStack {
-      StartingLogoItem(text: $logoText)
+      StartingLogoItem()
 
       Spacer()
 
       CredentialsInput()
 
-      CredentialsButtons(name: $buttonName)
+      CredentialsButtons()
         .padding(8)
 
     }

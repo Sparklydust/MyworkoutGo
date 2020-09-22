@@ -1,0 +1,22 @@
+/* 
+  Localizable.strings
+  MyworkoutGO
+
+  Created by Roland Lariotte on 22/09/2020.
+  
+*/
+
+
+// MARK: English translation
+
+
+// MARK: Logo
+"logoName" = "Myworkout GO";
+"enterEmail" = "Start by entering your email address.";
+
+// MARK: Placeholders
+"emailAddress" = "Email address";
+
+// MARK: Buttons
+"next" = "Next";
+"cancel" = "Cancel";

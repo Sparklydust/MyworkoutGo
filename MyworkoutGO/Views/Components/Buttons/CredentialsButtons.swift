@@ -13,7 +13,7 @@ import SwiftUI
 ///
 struct CredentialsButtons: View {
 
-  @Binding var name: String
+  @State var name = Localized.next
 
   var body: some View {
     HStack {
@@ -23,7 +23,7 @@ struct CredentialsButtons: View {
             .resizable()
             .frame(width: 24, height: 24)
 
-          Text("Cancel")
+          Text(Localized.cancel)
             .font(.callout)
 
         }
@@ -51,9 +51,10 @@ struct CredentialsButtons: View {
 struct CredentialsButtons_Previews: PreviewProvider {
   static var previews: some View {
     Group {
-      CredentialsButtons(name: .constant("Next"))
+      CredentialsButtons()
 
-      CredentialsButtons(name: .constant("Log in"))
+      CredentialsButtons()
+        .preferredColorScheme(.dark)
     }
   }
 }

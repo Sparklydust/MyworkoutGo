@@ -12,7 +12,7 @@ import SwiftUI
 ///
 struct StartingLogoItem: View {
 
-  @Binding var text: String
+  @State var text = Localized.enterEmail
 
   var body: some View {
     VStack(spacing: 8) {
@@ -22,7 +22,7 @@ struct StartingLogoItem: View {
         .scaledToFit()
         .padding()
 
-      Text("Myworkout GO")
+      Text(Localized.logoName)
         .font(.title)
 
       Text(text)
@@ -39,9 +39,9 @@ struct StartingLogoItem: View {
 struct StartingLogoItem_Previews: PreviewProvider {
   static var previews: some View {
     Group {
-      StartingLogoItem(text: .constant("Start by entering your email address"))
+      StartingLogoItem()
 
-      StartingLogoItem(text: .constant("Enter your password to log in"))
+      StartingLogoItem()
         .preferredColorScheme(.dark)
     }
   }

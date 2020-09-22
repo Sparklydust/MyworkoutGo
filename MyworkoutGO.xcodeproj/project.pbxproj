@@ -19,6 +19,8 @@
 		2A3BAA5A251A1813009EABF6 /* Color+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAA59251A1813009EABF6 /* Color+Name.swift */; };
 		2A3BAA5F251A1B12009EABF6 /* CredentialsInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAA5E251A1B12009EABF6 /* CredentialsInput.swift */; };
 		2A3BAA65251A1BE9009EABF6 /* DividerCredentialsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAA64251A1BE9009EABF6 /* DividerCredentialsItem.swift */; };
+		2A3BAA6E251A1F06009EABF6 /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAA6D251A1F06009EABF6 /* Localized.swift */; };
+		2A3BAA79251A2008009EABF6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A3BAA7B251A2008009EABF6 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		2A3BAA59251A1813009EABF6 /* Color+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Name.swift"; sourceTree = "<group>"; };
 		2A3BAA5E251A1B12009EABF6 /* CredentialsInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsInput.swift; sourceTree = "<group>"; };
 		2A3BAA64251A1BE9009EABF6 /* DividerCredentialsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerCredentialsItem.swift; sourceTree = "<group>"; };
+		2A3BAA6D251A1F06009EABF6 /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
+		2A3BAA7A251A2008009EABF6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,7 @@
 			children = (
 				2A3BAA2A2519F245009EABF6 /* SupportingFiles */,
 				2A3BAA2C2519F266009EABF6 /* MainApp */,
+				2A3BAA6C251A1EF1009EABF6 /* Localizables */,
 				2A3BAA312519FD33009EABF6 /* Extensions */,
 				2A3BAA2D2519F27E009EABF6 /* Views */,
 				2A3BA9FE2519F1BF009EABF6 /* Preview Content */,
@@ -226,6 +231,15 @@
 			path = TextFields;
 			sourceTree = "<group>";
 		};
+		2A3BAA6C251A1EF1009EABF6 /* Localizables */ = {
+			isa = PBXGroup;
+			children = (
+				2A3BAA6D251A1F06009EABF6 /* Localized.swift */,
+				2A3BAA7B251A2008009EABF6 /* Localizable.strings */,
+			);
+			path = Localizables;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -307,6 +321,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A3BAA002519F1BF009EABF6 /* Preview Assets.xcassets in Resources */,
+				2A3BAA79251A2008009EABF6 /* Localizable.strings in Resources */,
 				2A3BA9FD2519F1BF009EABF6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -330,6 +345,7 @@
 				2A3BAA332519FD4E009EABF6 /* Image+Name.swift in Sources */,
 				2A3BA9FB2519F1B8009EABF6 /* ContentView.swift in Sources */,
 				2A3BAA54251A14DE009EABF6 /* CredentialsButtons.swift in Sources */,
+				2A3BAA6E251A1F06009EABF6 /* Localized.swift in Sources */,
 				2A3BA9F92519F1B8009EABF6 /* MyworkoutGOApp.swift in Sources */,
 				2A3BAA5A251A1813009EABF6 /* Color+Name.swift in Sources */,
 				2A3BAA65251A1BE9009EABF6 /* DividerCredentialsItem.swift in Sources */,
@@ -354,6 +370,17 @@
 			targetProxy = 2A3BAA072519F1C0009EABF6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2A3BAA7B251A2008009EABF6 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A3BAA7A251A2008009EABF6 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		2A3BAA182519F1C0009EABF6 /* Debug */ = {

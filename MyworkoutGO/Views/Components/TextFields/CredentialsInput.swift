@@ -21,7 +21,7 @@ struct CredentialsInput: View {
   var body: some View {
     VStack {
       VStack {
-        TextField("Email address",
+        TextField(Localized.emailAddress,
                   text: $email)
           .textContentType(.emailAddress)
           .padding(.horizontal, 16)
