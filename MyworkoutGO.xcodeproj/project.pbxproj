@@ -13,6 +13,12 @@
 		2A3BAA002519F1BF009EABF6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A3BA9FF2519F1BF009EABF6 /* Preview Assets.xcassets */; };
 		2A3BAA0B2519F1C0009EABF6 /* MyworkoutGOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAA0A2519F1C0009EABF6 /* MyworkoutGOTests.swift */; };
 		2A3BAA332519FD4E009EABF6 /* Image+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAA322519FD4E009EABF6 /* Image+Name.swift */; };
+		2A3BAA43251A0C9E009EABF6 /* CredentialsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAA42251A0C9E009EABF6 /* CredentialsView.swift */; };
+		2A3BAA49251A10EA009EABF6 /* StartingLogoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAA48251A10EA009EABF6 /* StartingLogoItem.swift */; };
+		2A3BAA54251A14DE009EABF6 /* CredentialsButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAA53251A14DE009EABF6 /* CredentialsButtons.swift */; };
+		2A3BAA5A251A1813009EABF6 /* Color+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAA59251A1813009EABF6 /* Color+Name.swift */; };
+		2A3BAA5F251A1B12009EABF6 /* CredentialsInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAA5E251A1B12009EABF6 /* CredentialsInput.swift */; };
+		2A3BAA65251A1BE9009EABF6 /* DividerCredentialsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAA64251A1BE9009EABF6 /* DividerCredentialsItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +42,12 @@
 		2A3BAA0A2519F1C0009EABF6 /* MyworkoutGOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyworkoutGOTests.swift; sourceTree = "<group>"; };
 		2A3BAA0C2519F1C0009EABF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A3BAA322519FD4E009EABF6 /* Image+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Name.swift"; sourceTree = "<group>"; };
+		2A3BAA42251A0C9E009EABF6 /* CredentialsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsView.swift; sourceTree = "<group>"; };
+		2A3BAA48251A10EA009EABF6 /* StartingLogoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingLogoItem.swift; sourceTree = "<group>"; };
+		2A3BAA53251A14DE009EABF6 /* CredentialsButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsButtons.swift; sourceTree = "<group>"; };
+		2A3BAA59251A1813009EABF6 /* Color+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Name.swift"; sourceTree = "<group>"; };
+		2A3BAA5E251A1B12009EABF6 /* CredentialsInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsInput.swift; sourceTree = "<group>"; };
+		2A3BAA64251A1BE9009EABF6 /* DividerCredentialsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerCredentialsItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,25 +143,87 @@
 		2A3BAA2D2519F27E009EABF6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2A3BAA2E2519F291009EABF6 /* Main */,
+				2A3BAA47251A10A7009EABF6 /* Mains */,
+				2A3BAA46251A1087009EABF6 /* Items */,
+				2A3BAA51251A14C3009EABF6 /* Components */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		2A3BAA2E2519F291009EABF6 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				2A3BA9FA2519F1B8009EABF6 /* ContentView.swift */,
-			);
-			path = Main;
 			sourceTree = "<group>";
 		};
 		2A3BAA312519FD33009EABF6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				2A3BAA322519FD4E009EABF6 /* Image+Name.swift */,
+				2A3BAA59251A1813009EABF6 /* Color+Name.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2A3BAA3C251A0B4C009EABF6 /* Credentials */ = {
+			isa = PBXGroup;
+			children = (
+				2A3BAA42251A0C9E009EABF6 /* CredentialsView.swift */,
+			);
+			path = Credentials;
+			sourceTree = "<group>";
+		};
+		2A3BAA3D251A0B58009EABF6 /* TabBars */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TabBars;
+			sourceTree = "<group>";
+		};
+		2A3BAA46251A1087009EABF6 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				2A3BAA4E251A1115009EABF6 /* Credentials */,
+			);
+			path = Items;
+			sourceTree = "<group>";
+		};
+		2A3BAA47251A10A7009EABF6 /* Mains */ = {
+			isa = PBXGroup;
+			children = (
+				2A3BA9FA2519F1B8009EABF6 /* ContentView.swift */,
+				2A3BAA3C251A0B4C009EABF6 /* Credentials */,
+				2A3BAA3D251A0B58009EABF6 /* TabBars */,
+			);
+			path = Mains;
+			sourceTree = "<group>";
+		};
+		2A3BAA4E251A1115009EABF6 /* Credentials */ = {
+			isa = PBXGroup;
+			children = (
+				2A3BAA48251A10EA009EABF6 /* StartingLogoItem.swift */,
+				2A3BAA64251A1BE9009EABF6 /* DividerCredentialsItem.swift */,
+			);
+			path = Credentials;
+			sourceTree = "<group>";
+		};
+		2A3BAA51251A14C3009EABF6 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				2A3BAA5D251A1AF3009EABF6 /* TextFields */,
+				2A3BAA52251A14CD009EABF6 /* Buttons */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		2A3BAA52251A14CD009EABF6 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				2A3BAA53251A14DE009EABF6 /* CredentialsButtons.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		2A3BAA5D251A1AF3009EABF6 /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				2A3BAA5E251A1B12009EABF6 /* CredentialsInput.swift */,
+			);
+			path = TextFields;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,9 +325,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A3BAA49251A10EA009EABF6 /* StartingLogoItem.swift in Sources */,
+				2A3BAA43251A0C9E009EABF6 /* CredentialsView.swift in Sources */,
 				2A3BAA332519FD4E009EABF6 /* Image+Name.swift in Sources */,
 				2A3BA9FB2519F1B8009EABF6 /* ContentView.swift in Sources */,
+				2A3BAA54251A14DE009EABF6 /* CredentialsButtons.swift in Sources */,
 				2A3BA9F92519F1B8009EABF6 /* MyworkoutGOApp.swift in Sources */,
+				2A3BAA5A251A1813009EABF6 /* Color+Name.swift in Sources */,
+				2A3BAA65251A1BE9009EABF6 /* DividerCredentialsItem.swift in Sources */,
+				2A3BAA5F251A1B12009EABF6 /* CredentialsInput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

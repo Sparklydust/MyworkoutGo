@@ -17,7 +17,7 @@ extension Image {
 
   static let logo = Image("logo")
 
-  static let back = Image("back")
+  static let back = Image(systemName: "chevron.left.circle.fill")
 
-  static let next = Image("next")
+  static let next = Image(systemName: "chevron.right.circle.fill")
 }

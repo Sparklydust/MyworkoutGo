@@ -1,0 +1,44 @@
+//
+//  ContentView.swift
+//  MyworkoutGO
+//
+//  Created by Roland Lariotte on 22/09/2020.
+//
+
+import SwiftUI
+
+//  MARK: ContentView
+/// Root view of all existing SwiftUI views
+/// at app lauch.
+///
+/// Handling either to show the credentials at
+/// first connection or the tab bar views when
+/// user already logged in.
+///
+struct ContentView: View {
+
+  @State var isLoggedIn = false
+
+  var body: some View {
+    ZStack {
+      if !isLoggedIn {
+        CredentialsView()
+      }
+      else {
+        Text("Hello World")
+      }
+    }
+  }
+}
+
+// MARK: - Previews
+struct ContentView_Previews: PreviewProvider {
+  static var previews: some View {
+    Group {
+      ContentView()
+
+      ContentView()
+        .preferredColorScheme(.dark)
+    }
+  }
+}
