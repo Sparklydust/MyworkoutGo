@@ -28,7 +28,6 @@ struct CredentialsView: View {
 
       CredentialsButtons(showLogInSignUp: $showLogInSignUp)
         .padding(8)
-
     }
     .padding(.horizontal, 40)
     .animation(.spring(response: 0.5, dampingFraction: 0.55))

@@ -17,7 +17,7 @@ import SwiftUI
 ///
 struct ContentView: View {
 
-  @State var isLoggedIn = false
+  @State var isLoggedIn = true
 
   var body: some View {
     ZStack {
@@ -25,7 +25,13 @@ struct ContentView: View {
         CredentialsView()
       }
       else {
-        Text("Hello World")
+        TabView {
+          ProfileView()
+            .tabItem {
+              Image.profile
+              Text(Localized.profile)
+            }
+        }
       }
     }
   }

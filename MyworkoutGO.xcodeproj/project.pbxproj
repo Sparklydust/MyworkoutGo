@@ -21,6 +21,10 @@
 		2A3BAA65251A1BE9009EABF6 /* DividerCredentialsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAA64251A1BE9009EABF6 /* DividerCredentialsItem.swift */; };
 		2A3BAA6E251A1F06009EABF6 /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAA6D251A1F06009EABF6 /* Localized.swift */; };
 		2A3BAA79251A2008009EABF6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A3BAA7B251A2008009EABF6 /* Localizable.strings */; };
+		2A3BAA7F251A2CF0009EABF6 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAA7E251A2CF0009EABF6 /* ProfileView.swift */; };
+		2A3BAA86251A31EA009EABF6 /* ProfilePhotoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAA85251A31EA009EABF6 /* ProfilePhotoItem.swift */; };
+		2A3BAA8A251A33E6009EABF6 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAA89251A33E6009EABF6 /* ProfileCell.swift */; };
+		2A3BAA94251A3895009EABF6 /* LogOutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAA93251A3895009EABF6 /* LogOutButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +56,10 @@
 		2A3BAA64251A1BE9009EABF6 /* DividerCredentialsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerCredentialsItem.swift; sourceTree = "<group>"; };
 		2A3BAA6D251A1F06009EABF6 /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		2A3BAA7A251A2008009EABF6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2A3BAA7E251A2CF0009EABF6 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		2A3BAA85251A31EA009EABF6 /* ProfilePhotoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePhotoItem.swift; sourceTree = "<group>"; };
+		2A3BAA89251A33E6009EABF6 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
+		2A3BAA93251A3895009EABF6 /* LogOutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +158,7 @@
 			children = (
 				2A3BAA47251A10A7009EABF6 /* Mains */,
 				2A3BAA46251A1087009EABF6 /* Items */,
+				2A3BAA8D251A3466009EABF6 /* Cells */,
 				2A3BAA51251A14C3009EABF6 /* Components */,
 			);
 			path = Views;
@@ -175,6 +184,7 @@
 		2A3BAA3D251A0B58009EABF6 /* TabBars */ = {
 			isa = PBXGroup;
 			children = (
+				2A3BAA7E251A2CF0009EABF6 /* ProfileView.swift */,
 			);
 			path = TabBars;
 			sourceTree = "<group>";
@@ -183,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				2A3BAA4E251A1115009EABF6 /* Credentials */,
+				2A3BAA82251A2F78009EABF6 /* Profile */,
 			);
 			path = Items;
 			sourceTree = "<group>";
@@ -219,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				2A3BAA53251A14DE009EABF6 /* CredentialsButtons.swift */,
+				2A3BAA93251A3895009EABF6 /* LogOutButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -238,6 +250,30 @@
 				2A3BAA7B251A2008009EABF6 /* Localizable.strings */,
 			);
 			path = Localizables;
+			sourceTree = "<group>";
+		};
+		2A3BAA82251A2F78009EABF6 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				2A3BAA85251A31EA009EABF6 /* ProfilePhotoItem.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		2A3BAA8D251A3466009EABF6 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2A3BAA8E251A3476009EABF6 /* Profile */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		2A3BAA8E251A3476009EABF6 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				2A3BAA89251A33E6009EABF6 /* ProfileCell.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,12 +379,16 @@
 				2A3BAA49251A10EA009EABF6 /* StartingLogoItem.swift in Sources */,
 				2A3BAA43251A0C9E009EABF6 /* CredentialsView.swift in Sources */,
 				2A3BAA332519FD4E009EABF6 /* Image+Name.swift in Sources */,
+				2A3BAA86251A31EA009EABF6 /* ProfilePhotoItem.swift in Sources */,
 				2A3BA9FB2519F1B8009EABF6 /* ContentView.swift in Sources */,
 				2A3BAA54251A14DE009EABF6 /* CredentialsButtons.swift in Sources */,
 				2A3BAA6E251A1F06009EABF6 /* Localized.swift in Sources */,
 				2A3BA9F92519F1B8009EABF6 /* MyworkoutGOApp.swift in Sources */,
 				2A3BAA5A251A1813009EABF6 /* Color+Name.swift in Sources */,
+				2A3BAA94251A3895009EABF6 /* LogOutButton.swift in Sources */,
 				2A3BAA65251A1BE9009EABF6 /* DividerCredentialsItem.swift in Sources */,
+				2A3BAA8A251A33E6009EABF6 /* ProfileCell.swift in Sources */,
+				2A3BAA7F251A2CF0009EABF6 /* ProfileView.swift in Sources */,
 				2A3BAA5F251A1B12009EABF6 /* CredentialsInput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

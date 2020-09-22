@@ -20,4 +20,6 @@ extension Image {
   static let back = Image(systemName: "chevron.left.circle.fill")
 
   static let next = Image(systemName: "chevron.right.circle.fill")
+
+  static let profile = Image(systemName: "person.crop.circle")
 }

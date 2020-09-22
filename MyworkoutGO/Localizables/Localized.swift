@@ -24,6 +24,9 @@ enum Localized {
 // MARK: - Translation Keys
 extension Localized {
 
+  // MARK: Tab bar
+  static var profile: LSK { return "profile" }
+
   // MARK: Logo
   static var logoName: LSK { return "logoName" }
   static var enterEmail: LSK { return "enterEmail" }
@@ -33,6 +36,8 @@ extension Localized {
   // MARK: Placeholders
   static var emailAddress: LSK { return "emailAddress" }
   static var password: LSK { return "password" }
+  static var email: LSK { return "email" }
+  static var gender: LSK { return "gender" }
 
   // MARK: Buttons
   static var next: LSK { return "next" }
@@ -41,4 +46,5 @@ extension Localized {
   static var signUp: LSK { return "signUp" }
   static var female: LSK { return "female" }
   static var male: LSK { return "male" }
+  static var logOut: LSK { return "logOut" }
 }

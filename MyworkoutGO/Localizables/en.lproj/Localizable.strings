@@ -10,6 +10,9 @@
 // MARK: English translation
 
 
+// MARK: Tab bar
+"profile" = "Profile";
+
 // MARK: Logo
 "logoName" = "Myworkout GO";
 "enterEmail" = "Start by entering your email address.";
@@ -19,6 +22,8 @@
 // MARK: Placeholders
 "emailAddress" = "Email address";
 "password" = "Password";
+"email" = "Email";
+"gender" = "Gender";
 
 // MARK: Buttons
 "next" = "Next";
@@ -27,3 +32,4 @@
 "signUp" = "Sign Up";
 "female" = "Female";
 "male" = "Male";
+"logOut" = "Log out";
