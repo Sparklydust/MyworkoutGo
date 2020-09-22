@@ -13,10 +13,13 @@
 // MARK: Logo
 "logoName" = "Myworkout GO";
 "enterEmail" = "Start by entering your email address.";
+"enterPassword" = "Enter your password to log in.";
 
 // MARK: Placeholders
 "emailAddress" = "Email address";
+"password" = "Password";
 
 // MARK: Buttons
 "next" = "Next";
 "cancel" = "Cancel";
+"logIn" = "Log In";

@@ -16,10 +16,13 @@ import SwiftUI
 ///
 struct CredentialsInput: View {
 
+  @State var showLogIn = true
   @State var email = String()
+  @State var password = String()
 
   var body: some View {
-    VStack {
+    VStack(spacing: 32) {
+
       VStack {
         TextField(Localized.emailAddress,
                   text: $email)
@@ -28,6 +31,18 @@ struct CredentialsInput: View {
 
         DividerCredentialsItem()
       }
+
+      if showLogIn {
+        VStack {
+          SecureField(Localized.password,
+                      text: $password)
+            .textContentType(.password)
+            .padding(.horizontal, 16)
+
+          DividerCredentialsItem()
+        }
+      }
+
     }
     .padding(.bottom, 24)
   }

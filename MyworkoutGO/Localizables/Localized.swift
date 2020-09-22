@@ -27,11 +27,14 @@ extension Localized {
   // MARK: Logo
   static var logoName: LSK { return "logoName" }
   static var enterEmail: LSK { return "enterEmail" }
+  static var enterPassword: LSK { return "enterPassword" }
 
   // MARK: Placeholders
   static var emailAddress: LSK { return "emailAddress" }
+  static var password: LSK { return "password" }
 
   // MARK: Buttons
   static var next: LSK { return "next" }
   static var cancel: LSK { return "cancel" }
+  static var logIn: LSK { return "logIn" }
 }
