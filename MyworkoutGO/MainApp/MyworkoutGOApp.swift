@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct MyworkoutGOApp: App {
+
+  var user = User()
+
   var body: some Scene {
     WindowGroup {
       ContentView()
+        .environmentObject(user)
     }
   }
 }

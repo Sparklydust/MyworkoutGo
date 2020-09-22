@@ -25,6 +25,11 @@
 		2A3BAA86251A31EA009EABF6 /* ProfilePhotoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAA85251A31EA009EABF6 /* ProfilePhotoItem.swift */; };
 		2A3BAA8A251A33E6009EABF6 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAA89251A33E6009EABF6 /* ProfileCell.swift */; };
 		2A3BAA94251A3895009EABF6 /* LogOutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAA93251A3895009EABF6 /* LogOutButton.swift */; };
+		2A3BAA9A251A3B07009EABF6 /* UserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAA99251A3B07009EABF6 /* UserProtocol.swift */; };
+		2A3BAAA1251A3B63009EABF6 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAAA0251A3B63009EABF6 /* Gender.swift */; };
+		2A3BAAA5251A3C0C009EABF6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAAA4251A3C0C009EABF6 /* User.swift */; };
+		2A3BAAA9251A3FE3009EABF6 /* Gender+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAAA8251A3FE3009EABF6 /* Gender+Codable.swift */; };
+		2A3BAAAD251A4BF1009EABF6 /* Published+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAAAC251A4BF1009EABF6 /* Published+Codable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +65,11 @@
 		2A3BAA85251A31EA009EABF6 /* ProfilePhotoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePhotoItem.swift; sourceTree = "<group>"; };
 		2A3BAA89251A33E6009EABF6 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		2A3BAA93251A3895009EABF6 /* LogOutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutButton.swift; sourceTree = "<group>"; };
+		2A3BAA99251A3B07009EABF6 /* UserProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProtocol.swift; sourceTree = "<group>"; };
+		2A3BAAA0251A3B63009EABF6 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
+		2A3BAAA4251A3C0C009EABF6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2A3BAAA8251A3FE3009EABF6 /* Gender+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gender+Codable.swift"; sourceTree = "<group>"; };
+		2A3BAAAC251A4BF1009EABF6 /* Published+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Published+Codable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +115,9 @@
 				2A3BAA2C2519F266009EABF6 /* MainApp */,
 				2A3BAA6C251A1EF1009EABF6 /* Localizables */,
 				2A3BAA312519FD33009EABF6 /* Extensions */,
+				2A3BAA9F251A3B53009EABF6 /* Enums */,
+				2A3BAA98251A3AE2009EABF6 /* Protocols */,
+				2A3BAA97251A3ADA009EABF6 /* Models */,
 				2A3BAA2D2519F27E009EABF6 /* Views */,
 				2A3BA9FE2519F1BF009EABF6 /* Preview Content */,
 			);
@@ -169,6 +182,8 @@
 			children = (
 				2A3BAA322519FD4E009EABF6 /* Image+Name.swift */,
 				2A3BAA59251A1813009EABF6 /* Color+Name.swift */,
+				2A3BAAA8251A3FE3009EABF6 /* Gender+Codable.swift */,
+				2A3BAAAC251A4BF1009EABF6 /* Published+Codable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -276,6 +291,30 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		2A3BAA97251A3ADA009EABF6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2A3BAAA4251A3C0C009EABF6 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2A3BAA98251A3AE2009EABF6 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				2A3BAA99251A3B07009EABF6 /* UserProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		2A3BAA9F251A3B53009EABF6 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				2A3BAAA0251A3B63009EABF6 /* Gender.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -377,16 +416,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A3BAA49251A10EA009EABF6 /* StartingLogoItem.swift in Sources */,
+				2A3BAAA9251A3FE3009EABF6 /* Gender+Codable.swift in Sources */,
 				2A3BAA43251A0C9E009EABF6 /* CredentialsView.swift in Sources */,
 				2A3BAA332519FD4E009EABF6 /* Image+Name.swift in Sources */,
 				2A3BAA86251A31EA009EABF6 /* ProfilePhotoItem.swift in Sources */,
 				2A3BA9FB2519F1B8009EABF6 /* ContentView.swift in Sources */,
 				2A3BAA54251A14DE009EABF6 /* CredentialsButtons.swift in Sources */,
 				2A3BAA6E251A1F06009EABF6 /* Localized.swift in Sources */,
+				2A3BAAA5251A3C0C009EABF6 /* User.swift in Sources */,
 				2A3BA9F92519F1B8009EABF6 /* MyworkoutGOApp.swift in Sources */,
+				2A3BAA9A251A3B07009EABF6 /* UserProtocol.swift in Sources */,
 				2A3BAA5A251A1813009EABF6 /* Color+Name.swift in Sources */,
 				2A3BAA94251A3895009EABF6 /* LogOutButton.swift in Sources */,
+				2A3BAAAD251A4BF1009EABF6 /* Published+Codable.swift in Sources */,
 				2A3BAA65251A1BE9009EABF6 /* DividerCredentialsItem.swift in Sources */,
+				2A3BAAA1251A3B63009EABF6 /* Gender.swift in Sources */,
 				2A3BAA8A251A33E6009EABF6 /* ProfileCell.swift in Sources */,
 				2A3BAA7F251A2CF0009EABF6 /* ProfileView.swift in Sources */,
 				2A3BAA5F251A1B12009EABF6 /* CredentialsInput.swift in Sources */,

@@ -17,7 +17,7 @@ import SwiftUI
 ///
 struct ContentView: View {
 
-  @State var isLoggedIn = true
+  @State var isLoggedIn = false
 
   var body: some View {
     ZStack {
