@@ -11,7 +11,6 @@
 		2A3BA9FB2519F1B8009EABF6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BA9FA2519F1B8009EABF6 /* ContentView.swift */; };
 		2A3BA9FD2519F1BF009EABF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A3BA9FC2519F1BF009EABF6 /* Assets.xcassets */; };
 		2A3BAA002519F1BF009EABF6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A3BA9FF2519F1BF009EABF6 /* Preview Assets.xcassets */; };
-		2A3BAA0B2519F1C0009EABF6 /* MyworkoutGOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAA0A2519F1C0009EABF6 /* MyworkoutGOTests.swift */; };
 		2A3BAA332519FD4E009EABF6 /* Image+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAA322519FD4E009EABF6 /* Image+Name.swift */; };
 		2A3BAA43251A0C9E009EABF6 /* CredentialsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAA42251A0C9E009EABF6 /* CredentialsView.swift */; };
 		2A3BAA49251A10EA009EABF6 /* StartingLogoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAA48251A10EA009EABF6 /* StartingLogoItem.swift */; };
@@ -30,6 +29,14 @@
 		2A3BAAA5251A3C0C009EABF6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAAA4251A3C0C009EABF6 /* User.swift */; };
 		2A3BAAA9251A3FE3009EABF6 /* Gender+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAAA8251A3FE3009EABF6 /* Gender+Codable.swift */; };
 		2A3BAAAD251A4BF1009EABF6 /* Published+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAAAC251A4BF1009EABF6 /* Published+Codable.swift */; };
+		2A3BAAB3251A8843009EABF6 /* AuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAAB2251A8843009EABF6 /* AuthRequest.swift */; };
+		2A3BAAB7251A88FA009EABF6 /* NetworkEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAAB6251A88FA009EABF6 /* NetworkEndpoint.swift */; };
+		2A3BAABE251A8BB7009EABF6 /* AuthRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAABD251A8BB7009EABF6 /* AuthRequestProtocol.swift */; };
+		2A3BAAC4251A8D73009EABF6 /* AuthRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAAC3251A8D73009EABF6 /* AuthRequestTests.swift */; };
+		2A3BAACE251A8E75009EABF6 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAACD251A8E75009EABF6 /* MockURLSession.swift */; };
+		2A3BAAD4251A8E98009EABF6 /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAAD3251A8E98009EABF6 /* MockURLSessionDataTask.swift */; };
+		2A3BAADA251A900C009EABF6 /* FakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAAD9251A900C009EABF6 /* FakeResponseData.swift */; };
+		2A3BAAE1251A909F009EABF6 /* accounts.json in Resources */ = {isa = PBXBuildFile; fileRef = 2A3BAAE0251A909F009EABF6 /* accounts.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +57,6 @@
 		2A3BA9FF2519F1BF009EABF6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2A3BAA012519F1BF009EABF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A3BAA062519F1C0009EABF6 /* MyworkoutGOTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyworkoutGOTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2A3BAA0A2519F1C0009EABF6 /* MyworkoutGOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyworkoutGOTests.swift; sourceTree = "<group>"; };
 		2A3BAA0C2519F1C0009EABF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A3BAA322519FD4E009EABF6 /* Image+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Name.swift"; sourceTree = "<group>"; };
 		2A3BAA42251A0C9E009EABF6 /* CredentialsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsView.swift; sourceTree = "<group>"; };
@@ -70,6 +76,14 @@
 		2A3BAAA4251A3C0C009EABF6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2A3BAAA8251A3FE3009EABF6 /* Gender+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gender+Codable.swift"; sourceTree = "<group>"; };
 		2A3BAAAC251A4BF1009EABF6 /* Published+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Published+Codable.swift"; sourceTree = "<group>"; };
+		2A3BAAB2251A8843009EABF6 /* AuthRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRequest.swift; sourceTree = "<group>"; };
+		2A3BAAB6251A88FA009EABF6 /* NetworkEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEndpoint.swift; sourceTree = "<group>"; };
+		2A3BAABD251A8BB7009EABF6 /* AuthRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRequestProtocol.swift; sourceTree = "<group>"; };
+		2A3BAAC3251A8D73009EABF6 /* AuthRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRequestTests.swift; sourceTree = "<group>"; };
+		2A3BAACD251A8E75009EABF6 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
+		2A3BAAD3251A8E98009EABF6 /* MockURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionDataTask.swift; sourceTree = "<group>"; };
+		2A3BAAD9251A900C009EABF6 /* FakeResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseData.swift; sourceTree = "<group>"; };
+		2A3BAAE0251A909F009EABF6 /* accounts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = accounts.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +131,7 @@
 				2A3BAA312519FD33009EABF6 /* Extensions */,
 				2A3BAA9F251A3B53009EABF6 /* Enums */,
 				2A3BAA98251A3AE2009EABF6 /* Protocols */,
+				2A3BAAB0251A880B009EABF6 /* Services */,
 				2A3BAA97251A3ADA009EABF6 /* Models */,
 				2A3BAA2D2519F27E009EABF6 /* Views */,
 				2A3BA9FE2519F1BF009EABF6 /* Preview Content */,
@@ -136,7 +151,9 @@
 			isa = PBXGroup;
 			children = (
 				2A3BAA2B2519F258009EABF6 /* SupportingFiles */,
-				2A3BAA0A2519F1C0009EABF6 /* MyworkoutGOTests.swift */,
+				2A3BAAC1251A8D50009EABF6 /* Cases */,
+				2A3BAACB251A8E54009EABF6 /* Mocks */,
+				2A3BAAD7251A8FDF009EABF6 /* Fakes */,
 			);
 			path = MyworkoutGOTests;
 			sourceTree = "<group>";
@@ -303,6 +320,7 @@
 			isa = PBXGroup;
 			children = (
 				2A3BAA99251A3B07009EABF6 /* UserProtocol.swift */,
+				2A3BAABD251A8BB7009EABF6 /* AuthRequestProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -311,8 +329,83 @@
 			isa = PBXGroup;
 			children = (
 				2A3BAAA0251A3B63009EABF6 /* Gender.swift */,
+				2A3BAAB6251A88FA009EABF6 /* NetworkEndpoint.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		2A3BAAB0251A880B009EABF6 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2A3BAAB1251A8819009EABF6 /* Networks */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		2A3BAAB1251A8819009EABF6 /* Networks */ = {
+			isa = PBXGroup;
+			children = (
+				2A3BAAB2251A8843009EABF6 /* AuthRequest.swift */,
+			);
+			path = Networks;
+			sourceTree = "<group>";
+		};
+		2A3BAAC1251A8D50009EABF6 /* Cases */ = {
+			isa = PBXGroup;
+			children = (
+				2A3BAAC2251A8D5D009EABF6 /* Networks */,
+			);
+			name = Cases;
+			sourceTree = "<group>";
+		};
+		2A3BAAC2251A8D5D009EABF6 /* Networks */ = {
+			isa = PBXGroup;
+			children = (
+				2A3BAAC3251A8D73009EABF6 /* AuthRequestTests.swift */,
+			);
+			name = Networks;
+			sourceTree = "<group>";
+		};
+		2A3BAACB251A8E54009EABF6 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				2A3BAACC251A8E60009EABF6 /* Networks */,
+			);
+			name = Mocks;
+			sourceTree = "<group>";
+		};
+		2A3BAACC251A8E60009EABF6 /* Networks */ = {
+			isa = PBXGroup;
+			children = (
+				2A3BAACD251A8E75009EABF6 /* MockURLSession.swift */,
+				2A3BAAD3251A8E98009EABF6 /* MockURLSessionDataTask.swift */,
+			);
+			name = Networks;
+			sourceTree = "<group>";
+		};
+		2A3BAAD7251A8FDF009EABF6 /* Fakes */ = {
+			isa = PBXGroup;
+			children = (
+				2A3BAAD8251A8FF9009EABF6 /* Networks */,
+				2A3BAADF251A907B009EABF6 /* Json */,
+			);
+			name = Fakes;
+			sourceTree = "<group>";
+		};
+		2A3BAAD8251A8FF9009EABF6 /* Networks */ = {
+			isa = PBXGroup;
+			children = (
+				2A3BAAD9251A900C009EABF6 /* FakeResponseData.swift */,
+			);
+			name = Networks;
+			sourceTree = "<group>";
+		};
+		2A3BAADF251A907B009EABF6 /* Json */ = {
+			isa = PBXGroup;
+			children = (
+				2A3BAAE0251A909F009EABF6 /* accounts.json */,
+			);
+			name = Json;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -405,6 +498,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A3BAAE1251A909F009EABF6 /* accounts.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,8 +526,11 @@
 				2A3BAA65251A1BE9009EABF6 /* DividerCredentialsItem.swift in Sources */,
 				2A3BAAA1251A3B63009EABF6 /* Gender.swift in Sources */,
 				2A3BAA8A251A33E6009EABF6 /* ProfileCell.swift in Sources */,
+				2A3BAAB7251A88FA009EABF6 /* NetworkEndpoint.swift in Sources */,
 				2A3BAA7F251A2CF0009EABF6 /* ProfileView.swift in Sources */,
 				2A3BAA5F251A1B12009EABF6 /* CredentialsInput.swift in Sources */,
+				2A3BAAB3251A8843009EABF6 /* AuthRequest.swift in Sources */,
+				2A3BAABE251A8BB7009EABF6 /* AuthRequestProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,7 +538,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A3BAA0B2519F1C0009EABF6 /* MyworkoutGOTests.swift in Sources */,
+				2A3BAAD4251A8E98009EABF6 /* MockURLSessionDataTask.swift in Sources */,
+				2A3BAADA251A900C009EABF6 /* FakeResponseData.swift in Sources */,
+				2A3BAACE251A8E75009EABF6 /* MockURLSession.swift in Sources */,
+				2A3BAAC4251A8D73009EABF6 /* AuthRequestTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
