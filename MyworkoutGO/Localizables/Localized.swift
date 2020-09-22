@@ -28,6 +28,7 @@ extension Localized {
   static var logoName: LSK { return "logoName" }
   static var enterEmail: LSK { return "enterEmail" }
   static var enterPassword: LSK { return "enterPassword" }
+  static var fillSignUpForm: LSK { return "fillSignUpForm" }
 
   // MARK: Placeholders
   static var emailAddress: LSK { return "emailAddress" }
@@ -37,4 +38,7 @@ extension Localized {
   static var next: LSK { return "next" }
   static var cancel: LSK { return "cancel" }
   static var logIn: LSK { return "logIn" }
+  static var signUp: LSK { return "signUp" }
+  static var female: LSK { return "female" }
+  static var male: LSK { return "male" }
 }

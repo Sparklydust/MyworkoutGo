@@ -16,19 +16,22 @@ import SwiftUI
 ///
 struct CredentialsView: View {
 
+  @State var showLogInSignUp = false
+
   var body: some View {
     VStack {
       StartingLogoItem()
 
       Spacer()
 
-      CredentialsInput()
+      CredentialsInput(showLogInSignUp: $showLogInSignUp)
 
-      CredentialsButtons()
+      CredentialsButtons(showLogInSignUp: $showLogInSignUp)
         .padding(8)
 
     }
     .padding(.horizontal, 40)
+    .animation(.spring(response: 0.5, dampingFraction: 0.55))
   }
 }
 

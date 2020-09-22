@@ -13,11 +13,12 @@ import SwiftUI
 ///
 struct CredentialsButtons: View {
 
+  @Binding var showLogInSignUp: Bool
   @State var name = Localized.next
 
   var body: some View {
     HStack {
-      Button(action: { }) {
+      Button(action: { showLogInSignUp = false }) {
         HStack {
           Image.back
             .resizable()
@@ -32,7 +33,7 @@ struct CredentialsButtons: View {
 
       Spacer()
 
-      Button(action: { }) {
+      Button(action: { showLogInSignUp = true }) {
         HStack {
           Text(name)
             .font(.callout)
@@ -51,9 +52,9 @@ struct CredentialsButtons: View {
 struct CredentialsButtons_Previews: PreviewProvider {
   static var previews: some View {
     Group {
-      CredentialsButtons()
+      CredentialsButtons(showLogInSignUp: .constant(false))
 
-      CredentialsButtons()
+      CredentialsButtons(showLogInSignUp: .constant(true))
         .preferredColorScheme(.dark)
     }
   }
