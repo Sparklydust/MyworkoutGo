@@ -1,0 +1,32 @@
+{
+  "configurations" : [
+    {
+      "id" : "1512671A-9C00-4E3F-B99E-222DECF1C6BF",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "language" : "en",
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:MyworkoutGO.xcodeproj",
+      "identifier" : "2A3BA9F42519F1B8009EABF6",
+      "name" : "MyworkoutGO"
+    },
+    "testExecutionOrdering" : "random",
+    "uiTestingScreenshotsLifetime" : "keepNever",
+    "userAttachmentLifetime" : "keepNever"
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:MyworkoutGO.xcodeproj",
+        "identifier" : "2A3BAA052519F1C0009EABF6",
+        "name" : "MyworkoutGOTests"
+      }
+    }
+  ],
+  "version" : 1
+}

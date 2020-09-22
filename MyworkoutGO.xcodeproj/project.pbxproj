@@ -84,6 +84,7 @@
 		2A3BAAD3251A8E98009EABF6 /* MockURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionDataTask.swift; sourceTree = "<group>"; };
 		2A3BAAD9251A900C009EABF6 /* FakeResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseData.swift; sourceTree = "<group>"; };
 		2A3BAAE0251A909F009EABF6 /* accounts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = accounts.json; sourceTree = "<group>"; };
+		2A3BAAE7251A9393009EABF6 /* Development.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Development.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				2A3BA9F72519F1B8009EABF6 /* MyworkoutGO */,
+				2A3BAAE6251A932A009EABF6 /* MyworkoutGOXCTestPlans */,
 				2A3BAA092519F1C0009EABF6 /* MyworkoutGOTests */,
 				2A3BA9F62519F1B8009EABF6 /* Products */,
 			);
@@ -406,6 +408,14 @@
 				2A3BAAE0251A909F009EABF6 /* accounts.json */,
 			);
 			name = Json;
+			sourceTree = "<group>";
+		};
+		2A3BAAE6251A932A009EABF6 /* MyworkoutGOXCTestPlans */ = {
+			isa = PBXGroup;
+			children = (
+				2A3BAAE7251A9393009EABF6 /* Development.xctestplan */,
+			);
+			path = MyworkoutGOXCTestPlans;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
