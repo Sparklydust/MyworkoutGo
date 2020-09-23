@@ -36,6 +36,7 @@
 		2A3BAAFC251A9F15009EABF6 /* MyworkoutGoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAAFB251A9F15009EABF6 /* MyworkoutGoTests.swift */; };
 		2A3BAB00251AB030009EABF6 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAAFF251AB030009EABF6 /* NetworkError.swift */; };
 		2A3BAB04251AB114009EABF6 /* LogInCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAB03251AB114009EABF6 /* LogInCredentials.swift */; };
+		2A3BAB09251B3556009EABF6 /* CredentialsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAB08251B3556009EABF6 /* CredentialsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		2A3BAAFB251A9F15009EABF6 /* MyworkoutGoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyworkoutGoTests.swift; sourceTree = "<group>"; };
 		2A3BAAFF251AB030009EABF6 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		2A3BAB03251AB114009EABF6 /* LogInCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInCredentials.swift; sourceTree = "<group>"; };
+		2A3BAB08251B3556009EABF6 /* CredentialsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 				2A3BAA98251A3AE2009EABF6 /* Protocols */,
 				2A3BAAB0251A880B009EABF6 /* Services */,
 				2A3BAA97251A3ADA009EABF6 /* Models */,
+				2A3BAB07251B352C009EABF6 /* ViewModels */,
 				2A3BAA2D2519F27E009EABF6 /* Views */,
 				2A3BA9FE2519F1BF009EABF6 /* Preview Content */,
 			);
@@ -383,6 +386,14 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		2A3BAB07251B352C009EABF6 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				2A3BAB08251B3556009EABF6 /* CredentialsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -495,6 +506,7 @@
 				2A3BAA54251A14DE009EABF6 /* CredentialsButtons.swift in Sources */,
 				2A3BAA6E251A1F06009EABF6 /* Localized.swift in Sources */,
 				2A3BAB00251AB030009EABF6 /* NetworkError.swift in Sources */,
+				2A3BAB09251B3556009EABF6 /* CredentialsViewModel.swift in Sources */,
 				2A3BAAA5251A3C0C009EABF6 /* User.swift in Sources */,
 				2A3BA9F92519F1B8009EABF6 /* MyworkoutGOApp.swift in Sources */,
 				2A3BAA9A251A3B07009EABF6 /* UserProtocol.swift in Sources */,

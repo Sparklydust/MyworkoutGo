@@ -16,32 +16,25 @@ import SwiftUI
 ///
 struct CredentialsInput: View {
 
-  @Binding var showLogInSignUp: Bool
-
-  @State var showLogIn = false
-  @State var showSignUp = true
-  @State var femaleSelected = false
-  @State var maleSelected = false
-  @State var email = String()
-  @State var password = String()
+  @EnvironmentObject var viewModel: CredentialsViewModel
 
   var body: some View {
     VStack(spacing: 32) {
       VStack {
         TextField(Localized.emailAddress,
-                  text: $email)
+                  text: $viewModel.email)
           .textContentType(.emailAddress)
           .padding(.horizontal, 16)
 
         DividerCredentialsItem()
       }
 
-      if showLogInSignUp {
-        if showLogIn || showSignUp {
+      if viewModel.showLogInSignUp {
+        if viewModel.showLogIn || viewModel.showSignUp {
           VStack {
             SecureField(Localized.password,
-                        text: $password)
-              .textContentType(showLogIn
+                        text: $viewModel.password)
+              .textContentType(viewModel.showLogIn
                                 ? .password
                                 : .newPassword)
               .padding(.horizontal, 16)
@@ -49,15 +42,15 @@ struct CredentialsInput: View {
             DividerCredentialsItem()
           }
         }
-        if showSignUp {
+        if viewModel.showSignUp {
           VStack {
             HStack {
               HStack {
                 Button(action: {
-                  femaleSelected.toggle()
-                  maleSelected = false
+                  viewModel.femaleSelected.toggle()
+                  viewModel.maleSelected = false
                 }) {
-                  Image(systemName: femaleSelected
+                  Image(systemName: viewModel.femaleSelected
                           ? "checkmark.circle.fill"
                           : "circle")
                     .foregroundColor(.accentColor)
@@ -70,10 +63,10 @@ struct CredentialsInput: View {
 
               HStack {
                 Button(action: {
-                  maleSelected.toggle()
-                  femaleSelected = false
+                  viewModel.maleSelected.toggle()
+                  viewModel.femaleSelected = false
                 }) {
-                  Image(systemName: maleSelected
+                  Image(systemName: viewModel.maleSelected
                           ? "checkmark.circle.fill"
                           : "circle")
                     .foregroundColor(.purple$)
@@ -98,9 +91,9 @@ struct CredentialsInput: View {
 struct CredentialsInput_Previews: PreviewProvider {
   static var previews: some View {
     Group {
-      CredentialsInput(showLogInSignUp: .constant(false))
+      CredentialsInput()
 
-      CredentialsInput(showLogInSignUp: .constant(true))
+      CredentialsInput()
         .preferredColorScheme(.dark)
     }
   }

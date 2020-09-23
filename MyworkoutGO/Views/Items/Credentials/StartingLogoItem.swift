@@ -12,7 +12,7 @@ import SwiftUI
 ///
 struct StartingLogoItem: View {
 
-  @State var text = Localized.enterEmail
+  @EnvironmentObject var viewModel: CredentialsViewModel
 
   var body: some View {
     VStack(spacing: 8) {
@@ -25,7 +25,7 @@ struct StartingLogoItem: View {
       Text(Localized.logoName)
         .font(.title)
 
-      Text(text)
+      Text(viewModel.logoLabel)
         .font(.subheadline)
         .foregroundColor(.secondary)
     }

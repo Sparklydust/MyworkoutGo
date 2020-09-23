@@ -16,17 +16,15 @@ import SwiftUI
 ///
 struct CredentialsView: View {
 
-  @State var showLogInSignUp = false
-
   var body: some View {
     VStack {
       StartingLogoItem()
 
       Spacer()
 
-      CredentialsInput(showLogInSignUp: $showLogInSignUp)
+      CredentialsInput()
 
-      CredentialsButtons(showLogInSignUp: $showLogInSignUp)
+      CredentialsButtons()
         .padding(8)
     }
     .padding(.horizontal, 40)

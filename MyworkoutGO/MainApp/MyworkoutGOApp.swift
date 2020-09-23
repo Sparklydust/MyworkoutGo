@@ -11,11 +11,13 @@ import SwiftUI
 struct MyworkoutGOApp: App {
 
   var user = User()
+  var credentialsViewModel = CredentialsViewModel()
 
   var body: some Scene {
     WindowGroup {
       ContentView()
         .environmentObject(user)
+        .environmentObject(credentialsViewModel)
     }
   }
 }

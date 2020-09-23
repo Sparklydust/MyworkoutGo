@@ -17,11 +17,11 @@ import SwiftUI
 ///
 struct ContentView: View {
 
-  @State var isLoggedIn = false
+  @EnvironmentObject var viewModel: CredentialsViewModel
 
   var body: some View {
     ZStack {
-      if !isLoggedIn {
+      if !viewModel.isLoggedIn {
         CredentialsView()
       }
       else {
