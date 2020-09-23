@@ -33,3 +33,10 @@
 "female" = "Female";
 "male" = "Male";
 "logOut" = "Log out";
+
+// MARK: Error title
+"error" = "Error";
+
+// MARK: Error message
+"emailAlreadyUsed" = "Sorry but this email is already in user";
+"wrongPassword" = "Sorry but the password you entered is incorrect";

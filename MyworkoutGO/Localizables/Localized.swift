@@ -47,4 +47,11 @@ extension Localized {
   static var female: LSK { return "female" }
   static var male: LSK { return "male" }
   static var logOut: LSK { return "logOut" }
+
+  // MARK: Error title
+  static var error: LSK { return "error" }
+
+  // MARK: Error message
+  static var emailAlreadyUsed: LSK { return "emailAlreadyUsed" }
+  static var wrongPassword: LSK { return "wrongPassword" }
 }

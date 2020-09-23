@@ -12,20 +12,32 @@ import Combine
 /// MyworkoutGo network requests for authentification.
 ///
 /// Auth requests being made within this application are being
-/// set here with a resourceURL as full url. ResourceSession
-/// is set to be used for unit test only and to mock URLSession.
+/// set here and authSession is set to be used for unit test
+/// only and to mock URLSession.
 ///
-final class AuthRequest<Resource> where Resource: Codable {
+final class AuthRequest<Resource> where Resource: Codable { }
 
-  var resourceURL: NetworkEndpoint
-  var resourceSession: URLSession
-
-  init(_ resourceURL: NetworkEndpoint,
-       resourceSession: URLSession = URLSession(configuration: .default)) {
-    self.resourceURL = resourceURL
-    self.resourceSession = resourceSession
-  }
-}
-
+// MARK: - Requests
 extension AuthRequest: AuthRequestProtocol {
+  func signUp(_ credentials: SignUpCredentials) -> AnyPublisher<User, Never> {
+
+    let user = User(email: credentials.email,
+                    password: credentials.password,
+                    gender: credentials.gender)
+
+    return Just(user)
+      .debounce(for: .seconds(1), scheduler: DispatchQueue.main)
+      .eraseToAnyPublisher()
+  }
+
+  func logIn(_ credentials: LogInCredentials) -> AnyPublisher<User, Never> {
+
+    let user = User(email: credentials.email,
+                    password: credentials.password,
+                    gender: .male)
+
+    return Just(user)
+      .debounce(for: .seconds(1), scheduler: DispatchQueue.main)
+      .eraseToAnyPublisher()
+  }
 }

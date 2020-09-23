@@ -6,22 +6,31 @@
 //
 
 import Foundation
+import Combine
 
 protocol AuthRequestProtocol {
 
   /// Type to be retrieve or send with the URL call.
   associatedtype Resource
 
-  /// Parameter when calling AuthRequest that
-  /// set the full url path of the API request.
+  /// Sign up new user with provided credentials.
   ///
-  var resourceURL: NetworkEndpoint { get set }
+  /// A full user is being retrieve with a valid
+  /// email and password.
+  ///
+  /// - Parameters:
+  ///     - credentials: user email, password and gender.
+  /// - Returns: <User, Never>
+  ///
+  func signUp(_ credentials: SignUpCredentials) -> AnyPublisher<User, Never>
 
-  /// Main URLSession framework for API request.
+  /// Log in user to his/her account.
   ///
-  /// This parameter is not needed to be fullfilled in
-  /// the AuthRequest class as it is automatically set
-  /// in the init() and is only used for URLSession mock.
+  /// User with an account can successfully enter
+  /// the app with a valid email and password.
   ///
-  var resourceSession: URLSession { get set }
+  /// - Parameters:
+  ///     - credentials: user email and password.
+  /// - Returns: <String, Never>
+  func logIn(_ credentials: LogInCredentials) -> AnyPublisher<User, Never>
 }
