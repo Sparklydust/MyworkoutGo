@@ -39,6 +39,10 @@ protocol CredentialsProtocol {
   ///
   var disableButton: Bool { get set }
 
+  /// Trigger the UIActivityIndicator set in SwiftUI views.
+  ///
+  var isLoading: Bool { get set }
+
   /// Label showing text to user under the logo with explanation
   /// regarding his/her expecting behavior when onboarding.
   ///
@@ -92,5 +96,14 @@ protocol CredentialsProtocol {
   ///
   /// If it does, we trigger the log in flow otherwise, the sign up one.
   ///
+  /// - Parameter value: users email accounts from data base.
+  ///
   func continueCredentialsFlow(value: [String])
+
+  /// Check if the email is in a valid format or not.
+  ///
+  /// - Parameter email: user email from text field.
+  /// - Returns: true or false
+  ///
+  func isValid(_ email: String) -> Bool
 }

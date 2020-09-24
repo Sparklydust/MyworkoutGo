@@ -39,6 +39,7 @@
 		2A3BAB09251B3556009EABF6 /* CredentialsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAB08251B3556009EABF6 /* CredentialsViewModel.swift */; };
 		2AAACA03251C875100EF0134 /* CredentialsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAACA02251C875100EF0134 /* CredentialsProtocol.swift */; };
 		2AAACA07251C89CA00EF0134 /* String+RegEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAACA06251C89CA00EF0134 /* String+RegEx.swift */; };
+		2AAACA12251CC04D00EF0134 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAACA11251CC04D00EF0134 /* ActivityIndicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		2A3BAB08251B3556009EABF6 /* CredentialsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsViewModel.swift; sourceTree = "<group>"; };
 		2AAACA02251C875100EF0134 /* CredentialsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsProtocol.swift; sourceTree = "<group>"; };
 		2AAACA06251C89CA00EF0134 /* String+RegEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+RegEx.swift"; sourceTree = "<group>"; };
+		2AAACA11251CC04D00EF0134 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 				2A3BAA46251A1087009EABF6 /* Items */,
 				2A3BAA8D251A3466009EABF6 /* Cells */,
 				2A3BAA51251A14C3009EABF6 /* Components */,
+				2AAACA10251CC00F00EF0134 /* UIViewRepresentable */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -400,6 +403,14 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		2AAACA10251CC00F00EF0134 /* UIViewRepresentable */ = {
+			isa = PBXGroup;
+			children = (
+				2AAACA11251CC04D00EF0134 /* ActivityIndicator.swift */,
+			);
+			path = UIViewRepresentable;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -517,6 +528,7 @@
 				2A3BAAA5251A3C0C009EABF6 /* User.swift in Sources */,
 				2A3BA9F92519F1B8009EABF6 /* MyworkoutGOApp.swift in Sources */,
 				2A3BAA9A251A3B07009EABF6 /* UserProtocol.swift in Sources */,
+				2AAACA12251CC04D00EF0134 /* ActivityIndicator.swift in Sources */,
 				2A3BAA5A251A1813009EABF6 /* Color+Name.swift in Sources */,
 				2A3BAA94251A3895009EABF6 /* LogOutButton.swift in Sources */,
 				2AAACA07251C89CA00EF0134 /* String+RegEx.swift in Sources */,

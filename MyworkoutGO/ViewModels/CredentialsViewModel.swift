@@ -25,6 +25,7 @@ final class CredentialsViewModel: CredentialsProtocol, ObservableObject {
   @Published var femaleSelected = false
   @Published var maleSelected = false
   @Published var disableButton = false
+  @Published var isLoading = false
 
   // UI labels
   @Published var logoLabel = Localized.enterEmail
@@ -63,12 +64,7 @@ extension CredentialsViewModel {
       .combineLatest($email)
       .map { [weak self] _, email -> Bool in
         guard let self = self else { return true }
-        switch email {
-        case _ where email.isValidEmailFormat():
-          return false
-        default:
-          self.cancelButtonAction()
-          return true }}
+        return self.isValid(email) }
       .assign(to: \.disableButton, on: self)
       .store(in: &subscriptions)
   }
@@ -76,15 +72,16 @@ extension CredentialsViewModel {
   func checkIfUserEmailExist() {
     guard !showSignUp && !showLogIn else { return }
     showLogInSignUp = true
+    isLoading = true
 
     AuthRequest<User>().fetchAccounts()
       .sink(
-        receiveCompletion: { _ in
-        },
+        receiveCompletion: { [weak self] _ in
+          guard let self = self else { return }
+          self.isLoading = false },
         receiveValue: { [weak self] value in
           guard let self = self else { return }
-          self.continueCredentialsFlow(value: value)
-        })
+          self.continueCredentialsFlow(value: value) })
       .store(in: &subscriptions)
   }
 
@@ -101,5 +98,14 @@ extension CredentialsViewModel {
         self.logoLabel = Localized.fillSignUpForm
       }
     }
+  }
+
+  func isValid(_ email: String) -> Bool {
+    switch email {
+    case _ where email.isValidEmailFormat():
+      return false
+    default:
+      self.cancelButtonAction()
+      return true }
   }
 }

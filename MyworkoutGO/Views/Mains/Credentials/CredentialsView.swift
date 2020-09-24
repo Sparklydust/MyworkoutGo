@@ -19,18 +19,23 @@ struct CredentialsView: View {
   @EnvironmentObject var viewModel: CredentialsViewModel
 
   var body: some View {
-    VStack {
-      StartingLogoItem()
+    ZStack(alignment: .center) {
+      VStack {
+        StartingLogoItem()
 
-      Spacer()
+        Spacer()
 
-      CredentialsInput()
+        CredentialsInput()
 
-      CredentialsButtons()
-        .padding(8)
+        CredentialsButtons()
+          .padding(8)
+      }
+      .padding(.horizontal, 40)
+      .animation(.spring(response: 0.5, dampingFraction: 0.55))
+
+      ActivityIndicator(isAnimating: viewModel.isLoading)
     }
-    .padding(.horizontal, 40)
-    .animation(.spring(response: 0.5, dampingFraction: 0.55))
+    .allowsHitTesting(viewModel.isLoading ? false : true)
     .onAppear {
       viewModel.readUserInput()
     }
