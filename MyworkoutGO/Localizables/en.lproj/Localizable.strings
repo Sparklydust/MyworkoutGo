@@ -33,6 +33,7 @@
 "female" = "Female";
 "male" = "Male";
 "logOut" = "Log out";
+"ok" = "OK";
 
 // MARK: Error title
 "error" = "Error";

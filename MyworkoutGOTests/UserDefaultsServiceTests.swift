@@ -40,4 +40,22 @@ class UserDefaultsServiceTests: XCTestCase {
 
     XCTAssertEqual(false, userLoggedIn)
   }
+
+  func testUserDefaultsService_saveUserEmailValue_returnUserSavedEmail() throws {
+    sut.userEmail = "test@test.com"
+
+    let userEmail = sut.userEmail
+    let expected = "test@test.com"
+
+    XCTAssertEqual(expected, userEmail)
+  }
+
+  func testUserDefaultsService_saveUserGenderValue_returnUserSavedGender() throws {
+    sut.userGender = Gender.male
+
+    let userGender = sut.userGender
+    let expected = Gender.male
+
+    XCTAssertEqual(expected, userGender)
+  }
 }

@@ -13,4 +13,12 @@ protocol UserDefaultsProtocol {
   /// to hide or not CredentialsView.
   ///
   var isLoggedIn: Bool { get set }
+
+  /// Tracking user email when logged in.
+  ///
+  var userEmail: String { get set }
+
+  /// Tracking user gender when logged in.
+  ///
+  var userGender: Gender? { get set }
 }

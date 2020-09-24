@@ -11,4 +11,8 @@ import Foundation
 class MockUserDefaultsContainer: UserDefaultsProtocol {
 
   var isLoggedIn = false
+
+  var userEmail = String()
+
+  var userGender: Gender?
 }

@@ -32,4 +32,26 @@ extension UserDefaultsService {
       userDefaultsContainer.isLoggedIn = newValue
     }
   }
+
+  /// Tracking user email when logged in.
+  ///
+  var userEmail: String {
+    get {
+      return userDefaultsContainer.userEmail
+    }
+    set {
+      userDefaultsContainer.userEmail = newValue
+    }
+  }
+
+  /// Tracking user gender when logged in.
+  ///
+  var userGender: Gender {
+    get {
+      return userDefaultsContainer.userGender ?? .unknow
+    }
+    set {
+      userDefaultsContainer.userGender = newValue
+    }
+  }
 }

@@ -31,9 +31,9 @@ final class CredentialsViewModel: CredentialsProtocol, ObservableObject {
   @Published var nextButtonName = Localized.next
 
   // User inputs
-  @Published var email = String()
+  @Published var email = UserDefaultsService.shared.userEmail
+  @Published var gender = UserDefaultsService.shared.userGender
   @Published var password = String()
-  @Published var gender = Gender.unknow
 }
 
 // MARK: - Buttons actions
@@ -165,24 +165,48 @@ extension CredentialsViewModel {
   func performAPIActions(on credentials: LogInCredentials, with value: User) {
     if credentials.email == value.email
         && credentials.password == value.password {
-      self.userLoggedInSaved()
+      self.userLoggedInSaved(value)
     }
     else {
       self.showLogInAlert = true
     }
   }
 
-  func userLoggedInSaved() {
+  func userLoggedInSaved(_ value: User) {
+    saveInUserDefaults(value)
+    retrieveUserDefaultsValues()
+  }
+
+  func saveInUserDefaults(_ value: User) {
     UserDefaultsService.shared.isLoggedIn = true
+    UserDefaultsService.shared.userEmail = value.email
+    UserDefaultsService.shared.userGender = value.gender
+  }
+
+  func retrieveUserDefaultsValues() {
     isLoggedIn = UserDefaultsService.shared.isLoggedIn
+    email = UserDefaultsService.shared.userEmail
+    gender = UserDefaultsService.shared.userGender
   }
 }
 
 // MARK: Profile View
 extension CredentialsViewModel {
   func userLoggedOutSaved() {
+    resetUserDefaultsValues()
+    resetUserDefaultsAssociatedVariables()
+  }
+
+  func resetUserDefaultsValues() {
     UserDefaultsService.shared.isLoggedIn = false
+    UserDefaultsService.shared.userEmail = String()
+    UserDefaultsService.shared.userGender = .unknow
+  }
+
+  func resetUserDefaultsAssociatedVariables() {
     isLoggedIn = UserDefaultsService.shared.isLoggedIn
+    email = UserDefaultsService.shared.userEmail
+    gender = UserDefaultsService.shared.userGender
   }
 }
 
@@ -191,7 +215,7 @@ extension CredentialsViewModel {
   func LogInAlertView() -> Alert {
     Alert(title: Text(Localized.error),
           message: Text(Localized.wrongCredentials),
-          dismissButton: .cancel {
+          dismissButton: .default(Text(Localized.ok)) {
             self.password = String()
           })
     }

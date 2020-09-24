@@ -17,6 +17,8 @@ class UserDefaultsContainer {
   ///
   private struct Key {
     static let isLoggedIn = "isLoggedIn"
+    static let userEmail = "userEmail"
+    static let userGender = "userGender"
   }
 
   init() {
@@ -33,6 +35,29 @@ extension UserDefaultsContainer: UserDefaultsProtocol {
     }
     set {
       UserDefaults.standard.setValue(newValue, forKey: Key.isLoggedIn)
+    }
+  }
+
+  var userEmail: String {
+    get {
+      return UserDefaults.standard.string(forKey: Key.userEmail) ?? String()
+    }
+    set {
+      UserDefaults.standard.setValue(newValue, forKey: Key.userEmail)
+    }
+  }
+
+  var userGender: Gender? {
+    get {
+      guard let savedValue = UserDefaults.standard.object(forKey: Key.userGender)
+              as? Data else {  return nil }
+
+      let decodedValue = try? JSONDecoder().decode(Gender.self, from: savedValue)
+      return decodedValue
+    }
+    set {
+      let encodedValue = try? JSONEncoder().encode(newValue)
+      UserDefaults.standard.setValue(encodedValue, forKey: Key.userGender)
     }
   }
 }

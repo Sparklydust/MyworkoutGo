@@ -148,16 +148,39 @@ protocol CredentialsProtocol {
   ///
   func performAPIActions(on credentials: LogInCredentials, with value: User)
 
-  /// Save when user logged in to user defaults
+  /// Save values when user logged in to user defaults and set Publisher to this values.
   ///
   /// Used to open the app without the credentials view when user alreday
-  /// logged in once.
+  /// logged in once by saving the logged in credentials.
   ///
-  func userLoggedInSaved()
+  ///  - Parameters:
+  ///     - value: User data comming from the back end.
+  ///
+  func userLoggedInSaved(_ value: User)
+
+  /// Save values when user logged in to user defaults.
+  ///
+  /// Value retrieved in Profile view are saved here.
+  ///
+  ///  - Parameters:
+  ///     - value: User data comming from the back end.
+  ///
+  func saveInUserDefaults(_ value: User)
+
+  /// Retrieving the values saved in UserDefaults and set it to Publishers variables.
+  ///
+  func retrieveUserDefaultsValues()
 
   /// User logged out from the Profile tab view and sent back to startup view.
   ///
   func userLoggedOutSaved()
+
+  /// Resetting UserDefaults by deleting values when user logged out.
+  ///
+  func resetUserDefaultsValues()
+
+  /// Resetting UserDefaults associated variables when user logged out.
+  func resetUserDefaultsAssociatedVariables()
 
   /// Show alert with classic dissmiss button if user login credentials are invalid.
   ///
