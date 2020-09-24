@@ -40,12 +40,8 @@ final class CredentialsViewModel: CredentialsProtocol, ObservableObject {
 // MARK: - Buttons actions
 extension CredentialsViewModel {
   func cancelButtonAction() {
-    showLogInSignUp = false
-    showSignUp = false
-    showLogIn = false
-    nextButtonName = Localized.next
-    logoLabel = Localized.enterEmail
-    email = String()
+    goBackToStartingView()
+    resetLabels()
   }
 
   func nextButtonAction() {
@@ -55,7 +51,22 @@ extension CredentialsViewModel {
 
   func logOutAction() {
     cancelButtonAction()
-    userLoggedOut()
+    userLoggedOutSaved()
+  }
+
+  func goBackToStartingView() {
+    showLogInSignUp = false
+    showSignUp = false
+    showLogIn = false
+  }
+
+  func resetLabels() {
+    nextButtonName = Localized.next
+    logoLabel = Localized.enterEmail
+    email = String()
+    password = String()
+    femaleSelected = false
+    maleSelected = false
   }
 }
 
@@ -95,17 +106,17 @@ extension CredentialsViewModel {
 
   func continueCredentialsFlow(value: [String]) {
     for v in value {
-      if v == self.email {
-        self.showLogIn = true
-        self.showSignUp = false
-        self.logoLabel = Localized.enterPassword
-        self.nextButtonName = Localized.logIn
+      if v == email {
+        showLogIn = true
+        showSignUp = false
+        logoLabel = Localized.enterPassword
+        nextButtonName = Localized.logIn
       }
       else {
-        self.showSignUp = true
-        self.showLogIn = false
-        self.logoLabel = Localized.fillSignUpForm
-        self.nextButtonName = Localized.signUp
+        showSignUp = true
+        showLogIn = false
+        logoLabel = Localized.fillSignUpForm
+        nextButtonName = Localized.signUp
       }
     }
   }
@@ -148,12 +159,12 @@ extension CredentialsViewModel {
           self.isLoading = false },
         receiveValue: { [weak self] value in
           guard let self = self else { return }
-          self.userLoggedIn()
+          self.userLoggedInSaved()
         })
       .store(in: &subscriptions)
   }
 
-  func userLoggedIn() {
+  func userLoggedInSaved() {
     UserDefaultsService.shared.isLoggedIn = true
     isLoggedIn = UserDefaultsService.shared.isLoggedIn
   }
@@ -161,7 +172,7 @@ extension CredentialsViewModel {
 
 // MARK: Profile View
 extension CredentialsViewModel {
-  func userLoggedOut() {
+  func userLoggedOutSaved() {
     UserDefaultsService.shared.isLoggedIn = false
     isLoggedIn = UserDefaultsService.shared.isLoggedIn
   }

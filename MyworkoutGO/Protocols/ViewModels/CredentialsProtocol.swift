@@ -83,6 +83,14 @@ protocol CredentialsProtocol {
   ///
   func logOutAction()
 
+  /// Trigger actions to reset views to the starting credentials one.
+  ///
+  func goBackToStartingView()
+
+  /// Trigger actions to reset labels to the starting credentials view.
+  ///
+  func resetLabels()
+
   /// Reading reactivily the user inputs in text fields shown on
   /// different credentials screen until user logged in or sign up.
   ///
@@ -130,9 +138,9 @@ protocol CredentialsProtocol {
   /// Used to open the app without the credentials view when user alreday
   /// logged in once.
   ///
-  func userLoggedIn()
+  func userLoggedInSaved()
 
   /// User logged out from the Profile tab view and sent back to startup view.
   ///
-  func userLoggedOut()
+  func userLoggedOutSaved()
 }
