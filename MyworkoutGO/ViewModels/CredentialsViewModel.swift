@@ -49,6 +49,7 @@ extension CredentialsViewModel {
 
   func nextButtonAction() {
     checkIfUserEmailExist()
+    LogInUserCredentials()
   }
 }
 
@@ -56,6 +57,7 @@ extension CredentialsViewModel {
 extension CredentialsViewModel {
   func readUserInput() {
     readUserEmailInput()
+    readUserLogInInput()
   }
 
   func readUserEmailInput() {
@@ -91,11 +93,13 @@ extension CredentialsViewModel {
         self.showLogIn = true
         self.showSignUp = false
         self.logoLabel = Localized.enterPassword
+        self.nextButtonName = Localized.logIn
       }
       else {
         self.showSignUp = true
         self.showLogIn = false
         self.logoLabel = Localized.fillSignUpForm
+        self.nextButtonName = Localized.signUp
       }
     }
   }
@@ -107,5 +111,38 @@ extension CredentialsViewModel {
     default:
       self.cancelButtonAction()
       return true }
+  }
+}
+
+// MARK: - Log In Input
+extension CredentialsViewModel {
+  func readUserLogInInput() {
+    $showLogIn
+      .filter { $0 }
+      .combineLatest($email, $password)
+      .map { _, email, password -> Bool in
+        guard email.isValidEmailFormat(),
+              password != String() else { return true }
+        return false
+      }
+      .assign(to: \.disableButton, on: self)
+      .store(in: &subscriptions)
+  }
+
+  func LogInUserCredentials() {
+    guard showLogIn else { return }
+    isLoading = true
+
+    let credentials = LogInCredentials(email: email, password: password)
+
+    AuthRequest<User>().logIn(credentials)
+      .sink(
+        receiveCompletion: { [weak self] completion in
+          guard let self = self else { return }
+          self.isLoading = false },
+        receiveValue: { [weak self] value in
+          guard let self = self else { return }
+          self.isLoggedIn = true })
+      .store(in: &subscriptions)
   }
 }

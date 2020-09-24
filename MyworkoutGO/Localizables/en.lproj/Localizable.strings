@@ -39,4 +39,4 @@
 
 // MARK: Error message
 "emailAlreadyUsed" = "Sorry but this email is already in user";
-"wrongPassword" = "Sorry but the password you entered is incorrect";
+"wrongCredentials" = "Sorry but the credentials you entered are incorrect";

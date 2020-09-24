@@ -13,14 +13,14 @@ import SwiftUI
 enum NetworkError: Error {
 
   case emailAlreadyUsed
-  case wrongPassword
+  case wrongCredentials
 
   var errorDescription: LocalizedStringKey {
     switch self {
     case .emailAlreadyUsed:
       return Localized.emailAlreadyUsed
-    case .wrongPassword:
-      return Localized.wrongPassword
+    case .wrongCredentials:
+      return Localized.wrongCredentials
     }
   }
 }

@@ -106,4 +106,15 @@ protocol CredentialsProtocol {
   /// - Returns: true or false
   ///
   func isValid(_ email: String) -> Bool
+
+  /// Read user email and password text field inputs.
+  ///
+  func readUserLogInInput()
+
+  /// Log in user if account already exist.
+  ///
+  /// Trigger API call to data base and log in user if he/her has
+  /// an account. Trigger an Alert otherwise.
+  ///
+  func LogInUserCredentials()
 }

@@ -53,5 +53,5 @@ extension Localized {
 
   // MARK: Error message
   static var emailAlreadyUsed: LSK { return "emailAlreadyUsed" }
-  static var wrongPassword: LSK { return "wrongPassword" }
+  static var wrongCredentials: LSK { return "wrongCredentials" }
 }

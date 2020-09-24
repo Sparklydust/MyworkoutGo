@@ -18,7 +18,7 @@ final class AuthRequest<Resource> where Resource: Codable { }
 
 // MARK: - Requests
 extension AuthRequest: AuthRequestProtocol {
-  func signUp(_ credentials: SignUpCredentials) -> AnyPublisher<User, Never> {
+  func signUp(_ credentials: SignUpCredentials) -> AnyPublisher<User, NetworkError> {
 
     let user = User(email: credentials.email,
                     password: credentials.password,
@@ -26,10 +26,11 @@ extension AuthRequest: AuthRequestProtocol {
 
     return Just(user)
       .delay(for: .seconds(1), scheduler: DispatchQueue.main)
+      .mapError { _ -> NetworkError in }
       .eraseToAnyPublisher()
   }
 
-  func logIn(_ credentials: LogInCredentials) -> AnyPublisher<User, Never> {
+  func logIn(_ credentials: LogInCredentials) -> AnyPublisher<User, NetworkError> {
 
     let user = User(email: credentials.email,
                     password: credentials.password,
@@ -37,6 +38,7 @@ extension AuthRequest: AuthRequestProtocol {
 
     return Just(user)
       .delay(for: .seconds(1), scheduler: DispatchQueue.main)
+      .mapError { _ -> NetworkError in }
       .eraseToAnyPublisher()
   }
 
