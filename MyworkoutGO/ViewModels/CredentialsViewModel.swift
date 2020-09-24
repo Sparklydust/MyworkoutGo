@@ -18,7 +18,7 @@ final class CredentialsViewModel: CredentialsProtocol, ObservableObject {
   @EnvironmentObject var user: User
 
   // UI levers
-  @Published var isLoggedIn = false
+  @Published var isLoggedIn = UserDefaultsService.shared.isLoggedIn
   @Published var showLogInSignUp = false
   @Published var showLogIn = false
   @Published var showSignUp = false
@@ -142,7 +142,13 @@ extension CredentialsViewModel {
           self.isLoading = false },
         receiveValue: { [weak self] value in
           guard let self = self else { return }
-          self.isLoggedIn = true })
+          self.userLoggedIn()
+        })
       .store(in: &subscriptions)
+  }
+
+  func userLoggedIn() {
+    UserDefaultsService.shared.isLoggedIn = true
+    isLoggedIn = UserDefaultsService.shared.isLoggedIn
   }
 }

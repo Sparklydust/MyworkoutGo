@@ -33,13 +33,17 @@
 		2A3BAAB7251A88FA009EABF6 /* NetworkEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAAB6251A88FA009EABF6 /* NetworkEndpoint.swift */; };
 		2A3BAABE251A8BB7009EABF6 /* AuthRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAABD251A8BB7009EABF6 /* AuthRequestProtocol.swift */; };
 		2A3BAAEC251A94FE009EABF6 /* SignUpCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAAEB251A94FE009EABF6 /* SignUpCredentials.swift */; };
-		2A3BAAFC251A9F15009EABF6 /* MyworkoutGoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAAFB251A9F15009EABF6 /* MyworkoutGoTests.swift */; };
 		2A3BAB00251AB030009EABF6 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAAFF251AB030009EABF6 /* NetworkError.swift */; };
 		2A3BAB04251AB114009EABF6 /* LogInCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAB03251AB114009EABF6 /* LogInCredentials.swift */; };
 		2A3BAB09251B3556009EABF6 /* CredentialsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAB08251B3556009EABF6 /* CredentialsViewModel.swift */; };
 		2AAACA03251C875100EF0134 /* CredentialsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAACA02251C875100EF0134 /* CredentialsProtocol.swift */; };
 		2AAACA07251C89CA00EF0134 /* String+RegEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAACA06251C89CA00EF0134 /* String+RegEx.swift */; };
 		2AAACA12251CC04D00EF0134 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAACA11251CC04D00EF0134 /* ActivityIndicator.swift */; };
+		2AAACA22251CD10900EF0134 /* UserDefaultsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAACA21251CD10900EF0134 /* UserDefaultsProtocol.swift */; };
+		2AAACA2B251CD1CE00EF0134 /* UserDefaultsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAACA2A251CD1CE00EF0134 /* UserDefaultsContainer.swift */; };
+		2AAACA2F251CD2F900EF0134 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAACA2E251CD2F900EF0134 /* UserDefaultsService.swift */; };
+		2AAACA34251CD3F200EF0134 /* MockUserDefaultsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAACA33251CD3F200EF0134 /* MockUserDefaultsContainer.swift */; };
+		2AAACA3B251CD48F00EF0134 /* UserDefaultsServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAACA3A251CD48F00EF0134 /* UserDefaultsServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,13 +88,17 @@
 		2A3BAABD251A8BB7009EABF6 /* AuthRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRequestProtocol.swift; sourceTree = "<group>"; };
 		2A3BAAE7251A9393009EABF6 /* Development.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Development.xctestplan; sourceTree = "<group>"; };
 		2A3BAAEB251A94FE009EABF6 /* SignUpCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCredentials.swift; sourceTree = "<group>"; };
-		2A3BAAFB251A9F15009EABF6 /* MyworkoutGoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyworkoutGoTests.swift; sourceTree = "<group>"; };
 		2A3BAAFF251AB030009EABF6 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		2A3BAB03251AB114009EABF6 /* LogInCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInCredentials.swift; sourceTree = "<group>"; };
 		2A3BAB08251B3556009EABF6 /* CredentialsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsViewModel.swift; sourceTree = "<group>"; };
 		2AAACA02251C875100EF0134 /* CredentialsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsProtocol.swift; sourceTree = "<group>"; };
 		2AAACA06251C89CA00EF0134 /* String+RegEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+RegEx.swift"; sourceTree = "<group>"; };
 		2AAACA11251CC04D00EF0134 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		2AAACA21251CD10900EF0134 /* UserDefaultsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsProtocol.swift; sourceTree = "<group>"; };
+		2AAACA2A251CD1CE00EF0134 /* UserDefaultsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsContainer.swift; sourceTree = "<group>"; };
+		2AAACA2E251CD2F900EF0134 /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
+		2AAACA33251CD3F200EF0134 /* MockUserDefaultsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserDefaultsContainer.swift; sourceTree = "<group>"; };
+		2AAACA3A251CD48F00EF0134 /* UserDefaultsServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -329,9 +337,9 @@
 		2A3BAA98251A3AE2009EABF6 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				2A3BAA99251A3B07009EABF6 /* UserProtocol.swift */,
-				2A3BAABD251A8BB7009EABF6 /* AuthRequestProtocol.swift */,
-				2AAACA02251C875100EF0134 /* CredentialsProtocol.swift */,
+				2AAACA27251CD11800EF0134 /* Services */,
+				2AAACA29251CD12F00EF0134 /* Models */,
+				2AAACA28251CD12700EF0134 /* ViewModels */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -350,6 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				2A3BAAB1251A8819009EABF6 /* Networks */,
+				2AAACA20251CD0C000EF0134 /* UserDefaults */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -365,7 +374,7 @@
 		2A3BAAC1251A8D50009EABF6 /* Cases */ = {
 			isa = PBXGroup;
 			children = (
-				2A3BAAFB251A9F15009EABF6 /* MyworkoutGoTests.swift */,
+				2AAACA39251CD46A00EF0134 /* Services */,
 			);
 			name = Cases;
 			sourceTree = "<group>";
@@ -373,6 +382,7 @@
 		2A3BAACB251A8E54009EABF6 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				2AAACA32251CD3D000EF0134 /* Services */,
 			);
 			name = Mocks;
 			sourceTree = "<group>";
@@ -409,6 +419,56 @@
 				2AAACA11251CC04D00EF0134 /* ActivityIndicator.swift */,
 			);
 			path = UIViewRepresentable;
+			sourceTree = "<group>";
+		};
+		2AAACA20251CD0C000EF0134 /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				2AAACA2A251CD1CE00EF0134 /* UserDefaultsContainer.swift */,
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
+		2AAACA27251CD11800EF0134 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2AAACA21251CD10900EF0134 /* UserDefaultsProtocol.swift */,
+				2A3BAABD251A8BB7009EABF6 /* AuthRequestProtocol.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		2AAACA28251CD12700EF0134 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				2AAACA02251C875100EF0134 /* CredentialsProtocol.swift */,
+				2AAACA2E251CD2F900EF0134 /* UserDefaultsService.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		2AAACA29251CD12F00EF0134 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2A3BAA99251A3B07009EABF6 /* UserProtocol.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2AAACA32251CD3D000EF0134 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2AAACA33251CD3F200EF0134 /* MockUserDefaultsContainer.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		2AAACA39251CD46A00EF0134 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2AAACA3A251CD48F00EF0134 /* UserDefaultsServiceTests.swift */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -516,6 +576,7 @@
 				2A3BAAA9251A3FE3009EABF6 /* Gender+Codable.swift in Sources */,
 				2A3BAA43251A0C9E009EABF6 /* CredentialsView.swift in Sources */,
 				2AAACA03251C875100EF0134 /* CredentialsProtocol.swift in Sources */,
+				2AAACA22251CD10900EF0134 /* UserDefaultsProtocol.swift in Sources */,
 				2A3BAA332519FD4E009EABF6 /* Image+Name.swift in Sources */,
 				2A3BAAEC251A94FE009EABF6 /* SignUpCredentials.swift in Sources */,
 				2A3BAA86251A31EA009EABF6 /* ProfilePhotoItem.swift in Sources */,
@@ -539,7 +600,9 @@
 				2A3BAAB7251A88FA009EABF6 /* NetworkEndpoint.swift in Sources */,
 				2A3BAA7F251A2CF0009EABF6 /* ProfileView.swift in Sources */,
 				2A3BAA5F251A1B12009EABF6 /* CredentialsInput.swift in Sources */,
+				2AAACA2F251CD2F900EF0134 /* UserDefaultsService.swift in Sources */,
 				2A3BAAB3251A8843009EABF6 /* AuthRequest.swift in Sources */,
+				2AAACA2B251CD1CE00EF0134 /* UserDefaultsContainer.swift in Sources */,
 				2A3BAABE251A8BB7009EABF6 /* AuthRequestProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -548,7 +611,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A3BAAFC251A9F15009EABF6 /* MyworkoutGoTests.swift in Sources */,
+				2AAACA34251CD3F200EF0134 /* MockUserDefaultsContainer.swift in Sources */,
+				2AAACA3B251CD48F00EF0134 /* UserDefaultsServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
