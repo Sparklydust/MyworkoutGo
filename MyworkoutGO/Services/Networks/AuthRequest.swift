@@ -14,10 +14,9 @@ import Combine
 /// Auth requests being made within this application are being
 /// set here.
 ///
-final class AuthRequest<Resource> where Resource: Codable { }
+final class AuthRequest {
+  static let shared = AuthRequest()
 
-// MARK: - Requests
-extension AuthRequest: AuthRequestProtocol {
   func signUp(_ credentials: SignUpCredentials) -> AnyPublisher<User, NetworkError> {
 
     let user = User(email: credentials.email,
@@ -32,14 +31,14 @@ extension AuthRequest: AuthRequestProtocol {
 
   func logIn(_ credentials: LogInCredentials) -> AnyPublisher<User, NetworkError> {
 
-    let user = User(email: credentials.email,
-                    password: credentials.password,
-                    gender: .male)
+    let user = User(email: "registered@email.com",
+                    password: "password",
+                    gender: .female)
 
-    return Just(user)
-      .delay(for: .seconds(1), scheduler: DispatchQueue.main)
-      .mapError { _ -> NetworkError in }
-      .eraseToAnyPublisher()
+      return Just(user)
+        .delay(for: .seconds(1), scheduler: DispatchQueue.main)
+        .mapError { _ -> NetworkError in }
+        .eraseToAnyPublisher()
   }
 
   func fetchAccounts() -> AnyPublisher<[String], Never> {

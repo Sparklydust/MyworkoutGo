@@ -10,9 +10,6 @@ import Combine
 
 protocol AuthRequestProtocol {
 
-  /// Type to be retrieve or send with the URL call.
-  associatedtype Resource
-
   /// Sign up new user with provided credentials.
   ///
   /// A full user is being retrieve with a valid

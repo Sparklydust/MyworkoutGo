@@ -133,6 +133,21 @@ protocol CredentialsProtocol {
   ///
   func LogInUserCredentials()
 
+  /// Performing actions on value coming from the API.
+  ///
+  /// If user exist in data base, log in actions are trigger and user can
+  /// access the app. If wrong credentials are entered, an Alert is triggered
+  /// letting the user know about it.
+  /// Normally, with real Network calls, error are handled in the
+  /// receiveCompletion block. As it is a fake call, I handled them in
+  /// the receivedValue instead.
+  ///
+  /// - Parameters:
+  ///     - credentials: User log in credentials filled in the app.
+  ///     - value: User data comming from the back end.
+  ///
+  func performAPIActions(on credentials: LogInCredentials, with value: User)
+
   /// Save when user logged in to user defaults
   ///
   /// Used to open the app without the credentials view when user alreday
@@ -143,4 +158,9 @@ protocol CredentialsProtocol {
   /// User logged out from the Profile tab view and sent back to startup view.
   ///
   func userLoggedOutSaved()
+
+  /// Show alert with classic dissmiss button if user login credentials are invalid.
+  ///
+  /// - Returns: SwiftUI alert on CredentialsView.
+  func LogInAlertView() -> Alert
 }

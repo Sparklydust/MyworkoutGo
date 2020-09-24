@@ -15,8 +15,6 @@ final class CredentialsViewModel: CredentialsProtocol, ObservableObject {
 
   private var subscriptions = Set<AnyCancellable>()
 
-  @EnvironmentObject var user: User
-
   // UI levers
   @Published var isLoggedIn = UserDefaultsService.shared.isLoggedIn
   @Published var showLogInSignUp = false
@@ -26,6 +24,7 @@ final class CredentialsViewModel: CredentialsProtocol, ObservableObject {
   @Published var maleSelected = false
   @Published var disableButton = false
   @Published var isLoading = false
+  @Published var showLogInAlert = false
 
   // UI labels
   @Published var logoLabel = Localized.enterEmail
@@ -93,7 +92,7 @@ extension CredentialsViewModel {
     showLogInSignUp = true
     isLoading = true
 
-    AuthRequest<User>().fetchAccounts()
+    AuthRequest.shared.fetchAccounts()
       .sink(
         receiveCompletion: { [weak self] _ in
           guard let self = self else { return }
@@ -152,16 +151,25 @@ extension CredentialsViewModel {
 
     let credentials = LogInCredentials(email: email, password: password)
 
-    AuthRequest<User>().logIn(credentials)
+    AuthRequest.shared.logIn(credentials)
       .sink(
-        receiveCompletion: { [weak self] completion in
+        receiveCompletion: { [weak self] _ in
           guard let self = self else { return }
           self.isLoading = false },
         receiveValue: { [weak self] value in
           guard let self = self else { return }
-          self.userLoggedInSaved()
-        })
+          self.performAPIActions(on: credentials, with: value) })
       .store(in: &subscriptions)
+  }
+
+  func performAPIActions(on credentials: LogInCredentials, with value: User) {
+    if credentials.email == value.email
+        && credentials.password == value.password {
+      self.userLoggedInSaved()
+    }
+    else {
+      self.showLogInAlert = true
+    }
   }
 
   func userLoggedInSaved() {
@@ -176,4 +184,15 @@ extension CredentialsViewModel {
     UserDefaultsService.shared.isLoggedIn = false
     isLoggedIn = UserDefaultsService.shared.isLoggedIn
   }
+}
+
+// MARK: Alerts
+extension CredentialsViewModel {
+  func LogInAlertView() -> Alert {
+    Alert(title: Text(Localized.error),
+          message: Text(Localized.wrongCredentials),
+          dismissButton: .cancel {
+            self.password = String()
+          })
+    }
 }
