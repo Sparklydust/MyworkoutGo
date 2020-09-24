@@ -37,6 +37,8 @@
 		2A3BAB00251AB030009EABF6 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAAFF251AB030009EABF6 /* NetworkError.swift */; };
 		2A3BAB04251AB114009EABF6 /* LogInCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAB03251AB114009EABF6 /* LogInCredentials.swift */; };
 		2A3BAB09251B3556009EABF6 /* CredentialsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAB08251B3556009EABF6 /* CredentialsViewModel.swift */; };
+		2AAACA03251C875100EF0134 /* CredentialsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAACA02251C875100EF0134 /* CredentialsProtocol.swift */; };
+		2AAACA07251C89CA00EF0134 /* String+RegEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAACA06251C89CA00EF0134 /* String+RegEx.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +87,8 @@
 		2A3BAAFF251AB030009EABF6 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		2A3BAB03251AB114009EABF6 /* LogInCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInCredentials.swift; sourceTree = "<group>"; };
 		2A3BAB08251B3556009EABF6 /* CredentialsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsViewModel.swift; sourceTree = "<group>"; };
+		2AAACA02251C875100EF0134 /* CredentialsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsProtocol.swift; sourceTree = "<group>"; };
+		2AAACA06251C89CA00EF0134 /* String+RegEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+RegEx.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +207,7 @@
 				2A3BAA59251A1813009EABF6 /* Color+Name.swift */,
 				2A3BAAA8251A3FE3009EABF6 /* Gender+Codable.swift */,
 				2A3BAAAC251A4BF1009EABF6 /* Published+Codable.swift */,
+				2AAACA06251C89CA00EF0134 /* String+RegEx.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -323,6 +328,7 @@
 			children = (
 				2A3BAA99251A3B07009EABF6 /* UserProtocol.swift */,
 				2A3BAABD251A8BB7009EABF6 /* AuthRequestProtocol.swift */,
+				2AAACA02251C875100EF0134 /* CredentialsProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -498,6 +504,7 @@
 				2A3BAA49251A10EA009EABF6 /* StartingLogoItem.swift in Sources */,
 				2A3BAAA9251A3FE3009EABF6 /* Gender+Codable.swift in Sources */,
 				2A3BAA43251A0C9E009EABF6 /* CredentialsView.swift in Sources */,
+				2AAACA03251C875100EF0134 /* CredentialsProtocol.swift in Sources */,
 				2A3BAA332519FD4E009EABF6 /* Image+Name.swift in Sources */,
 				2A3BAAEC251A94FE009EABF6 /* SignUpCredentials.swift in Sources */,
 				2A3BAA86251A31EA009EABF6 /* ProfilePhotoItem.swift in Sources */,
@@ -512,6 +519,7 @@
 				2A3BAA9A251A3B07009EABF6 /* UserProtocol.swift in Sources */,
 				2A3BAA5A251A1813009EABF6 /* Color+Name.swift in Sources */,
 				2A3BAA94251A3895009EABF6 /* LogOutButton.swift in Sources */,
+				2AAACA07251C89CA00EF0134 /* String+RegEx.swift in Sources */,
 				2A3BAAAD251A4BF1009EABF6 /* Published+Codable.swift in Sources */,
 				2A3BAA65251A1BE9009EABF6 /* DividerCredentialsItem.swift in Sources */,
 				2A3BAAA1251A3B63009EABF6 /* Gender.swift in Sources */,

@@ -17,7 +17,7 @@ struct CredentialsButtons: View {
 
   var body: some View {
     HStack {
-      Button(action: { viewModel.showLogInSignUp = false }) {
+      Button(action: { viewModel.cancelButtonAction() }) {
         HStack {
           Image.back
             .resizable()
@@ -32,7 +32,7 @@ struct CredentialsButtons: View {
 
       Spacer()
 
-      Button(action: { viewModel.showLogInSignUp = true }) {
+      Button(action: { viewModel.nextButtonAction() }) {
         HStack {
           Text(viewModel.nextButtonName)
             .font(.callout)
@@ -43,6 +43,7 @@ struct CredentialsButtons: View {
         }
         .foregroundColor(.accentColor)
       }
+      .disabled(viewModel.disableButton)
     }
   }
 }

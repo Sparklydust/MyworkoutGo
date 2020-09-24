@@ -16,6 +16,8 @@ import SwiftUI
 ///
 struct CredentialsView: View {
 
+  @EnvironmentObject var viewModel: CredentialsViewModel
+
   var body: some View {
     VStack {
       StartingLogoItem()
@@ -29,6 +31,9 @@ struct CredentialsView: View {
     }
     .padding(.horizontal, 40)
     .animation(.spring(response: 0.5, dampingFraction: 0.55))
+    .onAppear {
+      viewModel.readUserInput()
+    }
   }
 }
 

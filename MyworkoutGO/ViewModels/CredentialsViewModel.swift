@@ -11,15 +11,20 @@ import Combine
 //  MARK: CredentialsViewModel
 /// Handle the credentials logic when user authenticate.
 ///
-final class CredentialsViewModel: ObservableObject {
+final class CredentialsViewModel: CredentialsProtocol, ObservableObject {
+
+  private var subscriptions = Set<AnyCancellable>()
+
+  @EnvironmentObject var user: User
 
   // UI levers
   @Published var isLoggedIn = false
   @Published var showLogInSignUp = false
   @Published var showLogIn = false
-  @Published var showSignUp = true
+  @Published var showSignUp = false
   @Published var femaleSelected = false
   @Published var maleSelected = false
+  @Published var disableButton = false
 
   // UI labels
   @Published var logoLabel = Localized.enterEmail
@@ -28,4 +33,42 @@ final class CredentialsViewModel: ObservableObject {
   // User inputs
   @Published var email = String()
   @Published var password = String()
+}
+
+// MARK: - Buttons actions
+extension CredentialsViewModel {
+  func cancelButtonAction() {
+    showLogInSignUp = false
+    showSignUp = false
+    showLogIn = false
+    nextButtonName = Localized.next
+    logoLabel = Localized.enterEmail
+    email = String()
+  }
+
+  func nextButtonAction() {
+    showLogInSignUp = true
+  }
+}
+
+extension CredentialsViewModel {
+  func readUserInput() {
+    readUserEmailInput()
+  }
+
+  func readUserEmailInput() {
+    $showLogInSignUp
+      .filter { !$0 }
+      .combineLatest($email)
+      .map { [weak self] _, email -> Bool in
+        guard let self = self else { return true }
+        switch email {
+        case _ where email.isValidEmailFormat():
+          return false
+        default:
+          self.cancelButtonAction()
+          return true }}
+      .assign(to: \.disableButton, on: self)
+      .store(in: &subscriptions)
+  }
 }

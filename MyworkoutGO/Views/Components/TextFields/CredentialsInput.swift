@@ -24,6 +24,7 @@ struct CredentialsInput: View {
         TextField(Localized.emailAddress,
                   text: $viewModel.email)
           .textContentType(.emailAddress)
+          .autocapitalization(.none)
           .padding(.horizontal, 16)
 
         DividerCredentialsItem()
@@ -37,11 +38,13 @@ struct CredentialsInput: View {
               .textContentType(viewModel.showLogIn
                                 ? .password
                                 : .newPassword)
+              .autocapitalization(.none)
               .padding(.horizontal, 16)
 
             DividerCredentialsItem()
           }
         }
+
         if viewModel.showSignUp {
           VStack {
             HStack {
