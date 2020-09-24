@@ -12,8 +12,10 @@ import SwiftUI
 ///
 struct LogOutButton: View {
 
+  @EnvironmentObject var viewModel: CredentialsViewModel
+
   var body: some View {
-    Button(action: { }) {
+    Button(action: { self.viewModel.logOutAction() }) {
       Text(Localized.logOut)
         .font(.title2)
         .foregroundColor(.white)

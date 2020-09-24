@@ -34,6 +34,7 @@ final class CredentialsViewModel: CredentialsProtocol, ObservableObject {
   // User inputs
   @Published var email = String()
   @Published var password = String()
+  @Published var gender = Gender.unknow
 }
 
 // MARK: - Buttons actions
@@ -50,6 +51,11 @@ extension CredentialsViewModel {
   func nextButtonAction() {
     checkIfUserEmailExist()
     LogInUserCredentials()
+  }
+
+  func logOutAction() {
+    cancelButtonAction()
+    userLoggedOut()
   }
 }
 
@@ -149,6 +155,14 @@ extension CredentialsViewModel {
 
   func userLoggedIn() {
     UserDefaultsService.shared.isLoggedIn = true
+    isLoggedIn = UserDefaultsService.shared.isLoggedIn
+  }
+}
+
+// MARK: Profile View
+extension CredentialsViewModel {
+  func userLoggedOut() {
+    UserDefaultsService.shared.isLoggedIn = false
     isLoggedIn = UserDefaultsService.shared.isLoggedIn
   }
 }

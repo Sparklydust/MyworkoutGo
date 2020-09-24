@@ -425,6 +425,7 @@
 			isa = PBXGroup;
 			children = (
 				2AAACA2A251CD1CE00EF0134 /* UserDefaultsContainer.swift */,
+				2AAACA2E251CD2F900EF0134 /* UserDefaultsService.swift */,
 			);
 			path = UserDefaults;
 			sourceTree = "<group>";
@@ -442,7 +443,6 @@
 			isa = PBXGroup;
 			children = (
 				2AAACA02251C875100EF0134 /* CredentialsProtocol.swift */,
-				2AAACA2E251CD2F900EF0134 /* UserDefaultsService.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";

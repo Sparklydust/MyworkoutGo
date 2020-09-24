@@ -12,8 +12,7 @@ import SwiftUI
 ///
 struct ProfileView: View {
 
-  @State var email = "registered@email.com"
-  @State var gender = "Male"
+  @EnvironmentObject var viewModel: CredentialsViewModel
 
   var body: some View {
     VStack {
@@ -21,9 +20,13 @@ struct ProfileView: View {
         .frame(height: 260)
 
       List {
-        ProfileCell(title: Localized.email, text: email)
+        ProfileCell(title: Localized.email,
+                    text: Text(viewModel.email))
 
-        ProfileCell(title: Localized.gender, text: gender)
+        ProfileCell(title: Localized.gender,
+                    text: viewModel.gender == .male
+                      ? Text(Localized.male)
+                      : Text(Localized.female))
       }
 
       Spacer()

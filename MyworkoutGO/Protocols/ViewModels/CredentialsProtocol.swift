@@ -76,6 +76,13 @@ protocol CredentialsProtocol {
   ///
   func nextButtonAction()
 
+  /// Action when the user log out of the application.
+  ///
+  /// All user credetials are deleted from the app and user is sent
+  /// back to the startup view.
+  ///
+  func logOutAction()
+
   /// Reading reactivily the user inputs in text fields shown on
   /// different credentials screen until user logged in or sign up.
   ///
@@ -117,4 +124,15 @@ protocol CredentialsProtocol {
   /// an account. Trigger an Alert otherwise.
   ///
   func LogInUserCredentials()
+
+  /// Save when user logged in to user defaults
+  ///
+  /// Used to open the app without the credentials view when user alreday
+  /// logged in once.
+  ///
+  func userLoggedIn()
+
+  /// User logged out from the Profile tab view and sent back to startup view.
+  ///
+  func userLoggedOut()
 }

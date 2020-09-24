@@ -13,14 +13,15 @@ import SwiftUI
 struct ProfileCell: View {
 
   var title: LocalizedStringKey
-  var text: String
+  var text: Text
 
   var body: some View {
     HStack {
       Text(title)
 
       Spacer()
-      Text(text)
+      
+      text
         .foregroundColor(.secondary)
     }
     .padding(.vertical, 8)
@@ -31,9 +32,9 @@ struct ProfileCell: View {
 struct ProfileCell_Previews: PreviewProvider {
   static var previews: some View {
     Group {
-      ProfileCell(title: Localized.email, text: "test@test.com")
+      ProfileCell(title: Localized.email, text: Text("test@test.com"))
 
-      ProfileCell(title: Localized.gender, text: "Female")
+      ProfileCell(title: Localized.gender, text: Text("Female"))
         .preferredColorScheme(.dark)
     }
   }
