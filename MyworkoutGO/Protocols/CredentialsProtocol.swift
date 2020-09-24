@@ -80,4 +80,17 @@ protocol CredentialsProtocol {
   /// Read user email text field input.
   ///
   func readUserEmailInput()
+
+  /// Trigger a network call to retrieve all user accounts.
+  ///
+  /// Verification weither the user email is registered in our data base.
+  /// If it does, we trigger the log in flow otherwise, the sign up one.
+  ///
+  func checkIfUserEmailExist()
+
+  /// Verification weither the user email is registered in our data base.
+  ///
+  /// If it does, we trigger the log in flow otherwise, the sign up one.
+  ///
+  func continueCredentialsFlow(value: [String])
 }

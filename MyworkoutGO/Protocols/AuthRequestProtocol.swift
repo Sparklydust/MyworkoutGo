@@ -32,5 +32,15 @@ protocol AuthRequestProtocol {
   /// - Parameters:
   ///     - credentials: user email and password.
   /// - Returns: <String, Never>
+  ///
   func logIn(_ credentials: LogInCredentials) -> AnyPublisher<User, Never>
+
+  /// Fetch all user email accounts.
+  ///
+  /// Used to verify if email is already in use and trigger log in or
+  /// sign up flow depending of the result.
+  ///
+  /// - Returns: <[String], Never>
+  ///
+  func fetchAccounts() -> AnyPublisher<[String], Never>
 }

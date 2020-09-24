@@ -12,8 +12,7 @@ import Combine
 /// MyworkoutGo network requests for authentification.
 ///
 /// Auth requests being made within this application are being
-/// set here and authSession is set to be used for unit test
-/// only and to mock URLSession.
+/// set here.
 ///
 final class AuthRequest<Resource> where Resource: Codable { }
 
@@ -26,7 +25,7 @@ extension AuthRequest: AuthRequestProtocol {
                     gender: credentials.gender)
 
     return Just(user)
-      .debounce(for: .seconds(1), scheduler: DispatchQueue.main)
+      .delay(for: .seconds(1), scheduler: DispatchQueue.main)
       .eraseToAnyPublisher()
   }
 
@@ -37,7 +36,16 @@ extension AuthRequest: AuthRequestProtocol {
                     gender: .male)
 
     return Just(user)
-      .debounce(for: .seconds(1), scheduler: DispatchQueue.main)
+      .delay(for: .seconds(1), scheduler: DispatchQueue.main)
+      .eraseToAnyPublisher()
+  }
+
+  func fetchAccounts() -> AnyPublisher<[String], Never> {
+
+    let users = ["registered@email.com"]
+
+    return Just(users)
+      .delay(for: .seconds(1), scheduler: DispatchQueue.main)
       .eraseToAnyPublisher()
   }
 }

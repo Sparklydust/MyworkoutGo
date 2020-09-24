@@ -47,10 +47,11 @@ extension CredentialsViewModel {
   }
 
   func nextButtonAction() {
-    showLogInSignUp = true
+    checkIfUserEmailExist()
   }
 }
 
+// MARK: Email Input
 extension CredentialsViewModel {
   func readUserInput() {
     readUserEmailInput()
@@ -70,5 +71,35 @@ extension CredentialsViewModel {
           return true }}
       .assign(to: \.disableButton, on: self)
       .store(in: &subscriptions)
+  }
+
+  func checkIfUserEmailExist() {
+    guard !showSignUp && !showLogIn else { return }
+    showLogInSignUp = true
+
+    AuthRequest<User>().fetchAccounts()
+      .sink(
+        receiveCompletion: { _ in
+        },
+        receiveValue: { [weak self] value in
+          guard let self = self else { return }
+          self.continueCredentialsFlow(value: value)
+        })
+      .store(in: &subscriptions)
+  }
+
+  func continueCredentialsFlow(value: [String]) {
+    for v in value {
+      if v == self.email {
+        self.showLogIn = true
+        self.showSignUp = false
+        self.logoLabel = Localized.enterPassword
+      }
+      else {
+        self.showSignUp = true
+        self.showLogIn = false
+        self.logoLabel = Localized.fillSignUpForm
+      }
+    }
   }
 }
