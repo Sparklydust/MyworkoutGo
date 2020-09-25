@@ -22,4 +22,6 @@ extension Image {
   static let next = Image(systemName: "chevron.right.circle.fill")
 
   static let profile = Image(systemName: "person.crop.circle")
+
+  static let nilsOlav = Image("nilsOlav")
 }

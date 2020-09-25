@@ -35,6 +35,7 @@ final class CredentialsViewModel: CredentialsProtocol, ObservableObject {
   @Published var email = UserDefaultsService.shared.userEmail
   @Published var gender = UserDefaultsService.shared.userGender
   @Published var password = String()
+  @Published var profilePicture = Image.profile
 }
 
 // MARK: - Publishers/Subscribers
@@ -183,6 +184,7 @@ extension CredentialsViewModel {
     if credentials.email == value.email
         && credentials.password == value.password {
       userCredentialsSaved(value)
+      profilePicture = .nilsOlav
     }
     else {
       showCredentialsAlert = true
@@ -228,6 +230,7 @@ extension CredentialsViewModel {
     if credentials.email != "registered@email.com" &&
         gender != .unknow {
       userCredentialsSaved(value)
+      profilePicture = .profile
     }
     else {
       showCredentialsAlert = true

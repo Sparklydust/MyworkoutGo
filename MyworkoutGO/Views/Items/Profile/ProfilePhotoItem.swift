@@ -12,7 +12,7 @@ import SwiftUI
 ///
 struct ProfilePhotoItem: View {
 
-  @State var profilePicture = Image.profile
+  @EnvironmentObject var viewModel: CredentialsViewModel
 
   var body: some View {
     ZStack {
@@ -25,7 +25,7 @@ struct ProfilePhotoItem: View {
         Text(Localized.profile)
           .font(.title)
 
-        profilePicture
+        viewModel.profilePicture
           .resizable()
           .frame(width: 120, height: 120, alignment: .center)
           .aspectRatio(contentMode: .fill)
