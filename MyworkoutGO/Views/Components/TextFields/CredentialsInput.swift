@@ -49,10 +49,7 @@ struct CredentialsInput: View {
           VStack {
             HStack {
               HStack {
-                Button(action: {
-                  viewModel.femaleSelected.toggle()
-                  viewModel.maleSelected = false
-                }) {
+                Button(action: { viewModel.genderSelected(.female) }) {
                   Image(systemName: viewModel.femaleSelected
                           ? "checkmark.circle.fill"
                           : "circle")
@@ -65,10 +62,7 @@ struct CredentialsInput: View {
               Spacer()
 
               HStack {
-                Button(action: {
-                  viewModel.maleSelected.toggle()
-                  viewModel.femaleSelected = false
-                }) {
+                Button(action: { viewModel.genderSelected(.male) }) {
                   Image(systemName: viewModel.maleSelected
                           ? "checkmark.circle.fill"
                           : "circle")

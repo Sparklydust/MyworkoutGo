@@ -24,7 +24,7 @@ final class CredentialsViewModel: CredentialsProtocol, ObservableObject {
   @Published var maleSelected = false
   @Published var disableButton = false
   @Published var isLoading = false
-  @Published var showLogInAlert = false
+  @Published var showCredentialsAlert = false
 
   // UI labels
   @Published var logoLabel = Localized.enterEmail
@@ -34,6 +34,15 @@ final class CredentialsViewModel: CredentialsProtocol, ObservableObject {
   @Published var email = UserDefaultsService.shared.userEmail
   @Published var gender = UserDefaultsService.shared.userGender
   @Published var password = String()
+}
+
+// MARK: - Publishers/Subscribers
+extension CredentialsViewModel {
+  func readUserInput() {
+    readUserEmailInput()
+    readUserLogInInput()
+    readUserSignUpInput()
+  }
 }
 
 // MARK: - Buttons actions
@@ -46,6 +55,7 @@ extension CredentialsViewModel {
   func nextButtonAction() {
     checkIfUserEmailExist()
     LogInUserCredentials()
+    SignUpUserCredentials()
   }
 
   func logOutAction() {
@@ -69,13 +79,8 @@ extension CredentialsViewModel {
   }
 }
 
-// MARK: Email Input
+// MARK: - Email Input
 extension CredentialsViewModel {
-  func readUserInput() {
-    readUserEmailInput()
-    readUserLogInInput()
-  }
-
   func readUserEmailInput() {
     $showLogInSignUp
       .filter { !$0 }
@@ -130,7 +135,7 @@ extension CredentialsViewModel {
   }
 }
 
-// MARK: - Log In Input
+// MARK: - Log In
 extension CredentialsViewModel {
   func readUserLogInInput() {
     $showLogIn
@@ -139,8 +144,7 @@ extension CredentialsViewModel {
       .map { _, email, password -> Bool in
         guard email.isValidEmailFormat(),
               password != String() else { return true }
-        return false
-      }
+        return false }
       .assign(to: \.disableButton, on: self)
       .store(in: &subscriptions)
   }
@@ -149,7 +153,8 @@ extension CredentialsViewModel {
     guard showLogIn else { return }
     isLoading = true
 
-    let credentials = LogInCredentials(email: email, password: password)
+    let credentials = LogInCredentials(email: email,
+                                       password: password)
 
     AuthRequest.shared.logIn(credentials)
       .sink(
@@ -158,21 +163,104 @@ extension CredentialsViewModel {
           self.isLoading = false },
         receiveValue: { [weak self] value in
           guard let self = self else { return }
-          self.performAPIActions(on: credentials, with: value) })
+          self.performAPILogInActions(on: credentials, with: value) })
       .store(in: &subscriptions)
   }
 
-  func performAPIActions(on credentials: LogInCredentials, with value: User) {
+  func performAPILogInActions(on credentials: LogInCredentials, with value: User) {
     if credentials.email == value.email
         && credentials.password == value.password {
-      self.userLoggedInSaved(value)
+      userCredentialsSaved(value)
     }
     else {
-      self.showLogInAlert = true
+      showCredentialsAlert = true
+    }
+  }
+}
+
+// MARK: - Sign Up
+extension CredentialsViewModel {
+  func readUserSignUpInput() {
+    $showSignUp
+      .filter { $0 }
+      .combineLatest($email, $password, $gender)
+      .map { _, email, password, gender -> Bool in
+        guard email.isValidEmailFormat(),
+              password != String(),
+              gender != .unknow else { return true }
+        return false }
+      .assign(to: \.disableButton, on: self)
+      .store(in: &subscriptions)
+  }
+
+  func SignUpUserCredentials() {
+    guard showSignUp else { return }
+    isLoading = true
+
+    let credentials = SignUpCredentials(email: email,
+                                        password: password,
+                                        gender: gender)
+
+    AuthRequest.shared.signUp(credentials)
+      .sink(
+        receiveCompletion: { [weak self] _ in
+          guard let self = self else { return }
+          self.isLoading = false },
+        receiveValue: { [weak self] value in
+          guard let self = self else { return }
+          self.performAPISignUpActions(on: credentials, with: value) })
+      .store(in: &subscriptions)
+  }
+
+  func performAPISignUpActions(on credentials: SignUpCredentials, with value: User) {
+    if credentials.email != "registered@email.com" &&
+        gender != .unknow {
+      userCredentialsSaved(value)
+    }
+    else {
+      showCredentialsAlert = true
     }
   }
 
-  func userLoggedInSaved(_ value: User) {
+  func genderSelected(_ gender: Gender) {
+    switch gender {
+    case .female:
+      femaleGenderSelected()
+      return
+    case .male:
+      maleGenderSelected()
+      return
+    default:
+      self.gender = .unknow
+    }
+  }
+
+  func femaleGenderSelected() {
+    femaleSelected.toggle()
+    maleSelected = false
+    if femaleSelected {
+      gender = .female
+    }
+    else {
+      gender = .unknow
+    }
+  }
+
+  func maleGenderSelected() {
+    maleSelected.toggle()
+    femaleSelected = false
+    if maleSelected {
+      gender = .male
+    }
+    else {
+      gender = .unknow
+    }
+  }
+}
+
+// MARK: - UserDefaults
+extension CredentialsViewModel {
+  func userCredentialsSaved(_ value: User) {
     saveInUserDefaults(value)
     retrieveUserDefaultsValues()
   }
@@ -190,7 +278,7 @@ extension CredentialsViewModel {
   }
 }
 
-// MARK: Profile View
+// MARK: - Profile View
 extension CredentialsViewModel {
   func userLoggedOutSaved() {
     resetUserDefaultsValues()
@@ -210,13 +298,27 @@ extension CredentialsViewModel {
   }
 }
 
-// MARK: Alerts
+// MARK: - Alerts
 extension CredentialsViewModel {
-  func LogInAlertView() -> Alert {
-    Alert(title: Text(Localized.error),
-          message: Text(Localized.wrongCredentials),
-          dismissButton: .default(Text(Localized.ok)) {
-            self.password = String()
-          })
+  func credentialsAlertView() -> Alert {
+    switch true {
+    case showLogIn:
+      return Alert(title: Text(Localized.error),
+                   message: Text(Localized.wrongCredentials),
+                   dismissButton: .default(Text(Localized.ok)) {
+                    self.password = String()
+                   })
+    case showSignUp:
+      return Alert(title: Text(Localized.error),
+                   message: Text(Localized.emailAlreadyUsed),
+                   dismissButton: .default(Text(Localized.ok)) {
+                    self.email = String()
+                    self.password = String()
+                   })
+    default:
+      return Alert(title: Text(Localized.error),
+                   message: Text(Localized.internalError),
+                   dismissButton: .default(Text(Localized.ok)))
     }
+  }
 }

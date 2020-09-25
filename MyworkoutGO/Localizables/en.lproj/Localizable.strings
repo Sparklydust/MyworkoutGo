@@ -39,5 +39,6 @@
 "error" = "Error";
 
 // MARK: Error message
-"emailAlreadyUsed" = "Sorry but this email is already in user";
-"wrongCredentials" = "Sorry but the credentials you entered are incorrect";
+"emailAlreadyUsed" = "Sorry but this email is already in used.";
+"wrongCredentials" = "Sorry but the credentials you entered are incorrect.";
+"internalError" = "Code 333, contact support.";

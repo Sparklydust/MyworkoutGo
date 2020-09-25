@@ -43,6 +43,10 @@ protocol CredentialsProtocol {
   ///
   var isLoading: Bool { get set }
 
+  /// Trigger alert to user when incorrect credentials are entered.
+  ///
+  var showCredentialsAlert: Bool { get set }
+
   /// Label showing text to user under the logo with explanation
   /// regarding his/her expecting behavior when onboarding.
   ///
@@ -60,6 +64,11 @@ protocol CredentialsProtocol {
   /// User entered password from the text field.
   ///
   var password: String { get set }
+
+  /// Reading reactivily the user inputs in text fields shown on
+  /// different credentials screen until user logged in or sign up.
+  ///
+  func readUserInput()
 
   /// Action triggered when the cancel button is tapped.
   ///
@@ -90,11 +99,6 @@ protocol CredentialsProtocol {
   /// Trigger actions to reset labels to the starting credentials view.
   ///
   func resetLabels()
-
-  /// Reading reactivily the user inputs in text fields shown on
-  /// different credentials screen until user logged in or sign up.
-  ///
-  func readUserInput()
 
   /// Read user email text field input.
   ///
@@ -128,7 +132,7 @@ protocol CredentialsProtocol {
 
   /// Log in user if account already exist.
   ///
-  /// Trigger API call to data base and log in user if he/her has
+  /// Trigger API call to data base and log in user if he/she has
   /// an account. Trigger an Alert otherwise.
   ///
   func LogInUserCredentials()
@@ -146,17 +150,55 @@ protocol CredentialsProtocol {
   ///     - credentials: User log in credentials filled in the app.
   ///     - value: User data comming from the back end.
   ///
-  func performAPIActions(on credentials: LogInCredentials, with value: User)
+  func performAPILogInActions(on credentials: LogInCredentials, with value: User)
 
-  /// Save values when user logged in to user defaults and set Publisher to this values.
+  /// Read user email, password text field and gender inputs.
+  ///
+  func readUserSignUpInput()
+
+  /// Sign up user if account has never been created before.
+  ///
+  /// Trigger API call to data base and sign up user if he/she has never
+  /// created an account before. Trigger an alert otherwise.
+  ///
+  func SignUpUserCredentials()
+
+  /// Performing actions on value coming from the API.
+  ///
+  /// If user create a new account with an unknown email, sign up actions are
+  /// trigger and user can access the app. If wrong credentials are entered,
+  /// an Alert is triggered letting the user know about it.
+  /// Normally, with real Network calls, error are handled in the
+  /// receiveCompletion block. As it is a fake call, I handled them in
+  /// the receivedValue instead.
+  ///
+  /// - Parameters:
+  ///     - credentials: User log in credentials filled in the app.
+  ///     - value: User data comming from the back end.
+  ///
+  func performAPISignUpActions(on credentials: SignUpCredentials, with value: User)
+
+  /// Selection of the gender by user on the sign up screen.
+  ///
+  func genderSelected(_ gender: Gender)
+
+  /// Actions triggered when user has selected the female gender in the sign up flow.
+  ///
+  func femaleGenderSelected()
+
+  /// Actions triggered when user has selected the male gender in the sign up flow.
+  ///
+  func maleGenderSelected()
+
+  /// Save values when user enter the app to user defaults and set Publisher to this values.
   ///
   /// Used to open the app without the credentials view when user alreday
-  /// logged in once by saving the logged in credentials.
+  /// logged in once by saving the logged in or sign up credentials.
   ///
   ///  - Parameters:
   ///     - value: User data comming from the back end.
   ///
-  func userLoggedInSaved(_ value: User)
+  func userCredentialsSaved(_ value: User)
 
   /// Save values when user logged in to user defaults.
   ///
@@ -180,10 +222,15 @@ protocol CredentialsProtocol {
   func resetUserDefaultsValues()
 
   /// Resetting UserDefaults associated variables when user logged out.
+  ///
   func resetUserDefaultsAssociatedVariables()
 
-  /// Show alert with classic dissmiss button if user login credentials are invalid.
+  /// Show alert with classic dismiss button if user credentials are invalid.
   ///
-  /// - Returns: SwiftUI alert on CredentialsView.
-  func LogInAlertView() -> Alert
+  /// Depending on weither the user log in or sign up, a proper alert is shown
+  /// to the user
+  ///
+  /// - Returns: SwiftUI alert on CredentialsView
+  ///
+  func credentialsAlertView() -> Alert
 }

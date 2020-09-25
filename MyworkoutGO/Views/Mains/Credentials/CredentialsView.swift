@@ -37,8 +37,8 @@ struct CredentialsView: View {
     }
     .allowsHitTesting(viewModel.isLoading ? false : true)
     .onAppear { viewModel.readUserInput() }
-    .alert(isPresented: $viewModel.showLogInAlert) {
-      self.viewModel.LogInAlertView()
+    .alert(isPresented: $viewModel.showCredentialsAlert) {
+      self.viewModel.credentialsAlertView()
     }
   }
 }
