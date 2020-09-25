@@ -22,7 +22,7 @@ struct StartingLogoItem: View {
         .scaledToFit()
         .padding()
 
-      Text(Localized.logoName)
+      Text(viewModel.logoTitle)
         .font(.title)
 
       Text(viewModel.logoLabel)

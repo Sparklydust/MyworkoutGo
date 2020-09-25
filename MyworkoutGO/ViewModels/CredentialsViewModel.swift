@@ -27,6 +27,7 @@ final class CredentialsViewModel: CredentialsProtocol, ObservableObject {
   @Published var showCredentialsAlert = false
 
   // UI labels
+  @Published var logoTitle = Localized.appName
   @Published var logoLabel = Localized.enterEmail
   @Published var nextButtonName = Localized.next
 
@@ -71,6 +72,7 @@ extension CredentialsViewModel {
 
   func resetLabels() {
     nextButtonName = Localized.next
+    logoTitle = Localized.appName
     logoLabel = Localized.enterEmail
     email = String()
     password = String()
@@ -111,18 +113,28 @@ extension CredentialsViewModel {
   func continueCredentialsFlow(value: [String]) {
     for v in value {
       if v == email {
-        showLogIn = true
-        showSignUp = false
-        logoLabel = Localized.enterPassword
-        nextButtonName = Localized.logIn
+        setupLogInView()
       }
       else {
-        showSignUp = true
-        showLogIn = false
-        logoLabel = Localized.fillSignUpForm
-        nextButtonName = Localized.signUp
+        setupSignUpView()
       }
     }
+  }
+
+  func setupLogInView() {
+    showLogIn = true
+    showSignUp = false
+    logoTitle = Localized.welcomeBack
+    logoLabel = Localized.enterPassword
+    nextButtonName = Localized.logIn
+  }
+
+  func setupSignUpView() {
+    showSignUp = true
+    showLogIn = false
+    logoTitle = Localized.createAccount
+    logoLabel = Localized.fillSignUpForm
+    nextButtonName = Localized.signUp
   }
 
   func isValid(_ email: String) -> Bool {

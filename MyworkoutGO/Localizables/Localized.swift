@@ -28,7 +28,9 @@ extension Localized {
   static var profile: LSK { return "profile" }
 
   // MARK: Logo
-  static var logoName: LSK { return "logoName" }
+  static var appName: LSK { return "appName" }
+  static var welcomeBack: LSK { return "welcomeBack" }
+  static var createAccount: LSK { return "createAccount" }
   static var enterEmail: LSK { return "enterEmail" }
   static var enterPassword: LSK { return "enterPassword" }
   static var fillSignUpForm: LSK { return "fillSignUpForm" }

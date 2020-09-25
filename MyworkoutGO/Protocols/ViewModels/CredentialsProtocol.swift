@@ -119,6 +119,14 @@ protocol CredentialsProtocol {
   ///
   func continueCredentialsFlow(value: [String])
 
+  /// Trigger action to setup log in view and change labels accordingly.
+  ///
+  func setupLogInView()
+
+  /// Trigger action to setup sign up view and change labels accordingly.
+  ///
+  func setupSignUpView()
+
   /// Check if the email is in a valid format or not.
   ///
   /// - Parameter email: user email from text field.

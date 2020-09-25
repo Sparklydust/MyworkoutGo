@@ -14,7 +14,9 @@
 "profile" = "Profile";
 
 // MARK: Logo
-"logoName" = "Myworkout GO";
+"appName" = "Myworkout GO";
+"welcomeBack" = "Welcome back";
+"createAccount" = "Create a new account";
 "enterEmail" = "Start by entering your email address.";
 "enterPassword" = "Enter your password to log in.";
 "fillSignUpForm" = "Fill out the form and sign up for free.";
