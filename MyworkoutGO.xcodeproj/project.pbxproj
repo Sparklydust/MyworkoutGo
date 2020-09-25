@@ -30,12 +30,16 @@
 		2A3BAAA9251A3FE3009EABF6 /* Gender+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAAA8251A3FE3009EABF6 /* Gender+Codable.swift */; };
 		2A3BAAAD251A4BF1009EABF6 /* Published+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAAAC251A4BF1009EABF6 /* Published+Codable.swift */; };
 		2A3BAAB3251A8843009EABF6 /* AuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAAB2251A8843009EABF6 /* AuthRequest.swift */; };
-		2A3BAAB7251A88FA009EABF6 /* NetworkEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAAB6251A88FA009EABF6 /* NetworkEndpoint.swift */; };
 		2A3BAABE251A8BB7009EABF6 /* AuthRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAABD251A8BB7009EABF6 /* AuthRequestProtocol.swift */; };
 		2A3BAAEC251A94FE009EABF6 /* SignUpCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAAEB251A94FE009EABF6 /* SignUpCredentials.swift */; };
 		2A3BAB00251AB030009EABF6 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAAFF251AB030009EABF6 /* NetworkError.swift */; };
 		2A3BAB04251AB114009EABF6 /* LogInCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAB03251AB114009EABF6 /* LogInCredentials.swift */; };
 		2A3BAB09251B3556009EABF6 /* CredentialsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAB08251B3556009EABF6 /* CredentialsViewModel.swift */; };
+		2A6BAD76251E10B400AFBD05 /* FemaleTickBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BAD75251E10B400AFBD05 /* FemaleTickBox.swift */; };
+		2A6BAD7A251E113600AFBD05 /* MaleTickBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BAD79251E113600AFBD05 /* MaleTickBox.swift */; };
+		2A6BAD7E251E11C000AFBD05 /* GenderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BAD7D251E11C000AFBD05 /* GenderTextField.swift */; };
+		2A6BAD82251E125500AFBD05 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BAD81251E125500AFBD05 /* PasswordTextField.swift */; };
+		2A6BAD88251E12F900AFBD05 /* EmailTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BAD87251E12F900AFBD05 /* EmailTextField.swift */; };
 		2AAACA07251C89CA00EF0134 /* String+RegEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAACA06251C89CA00EF0134 /* String+RegEx.swift */; };
 		2AAACA12251CC04D00EF0134 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAACA11251CC04D00EF0134 /* ActivityIndicator.swift */; };
 		2AAACA22251CD10900EF0134 /* UserDefaultsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAACA21251CD10900EF0134 /* UserDefaultsProtocol.swift */; };
@@ -83,13 +87,17 @@
 		2A3BAAA8251A3FE3009EABF6 /* Gender+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gender+Codable.swift"; sourceTree = "<group>"; };
 		2A3BAAAC251A4BF1009EABF6 /* Published+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Published+Codable.swift"; sourceTree = "<group>"; };
 		2A3BAAB2251A8843009EABF6 /* AuthRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRequest.swift; sourceTree = "<group>"; };
-		2A3BAAB6251A88FA009EABF6 /* NetworkEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEndpoint.swift; sourceTree = "<group>"; };
 		2A3BAABD251A8BB7009EABF6 /* AuthRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRequestProtocol.swift; sourceTree = "<group>"; };
 		2A3BAAE7251A9393009EABF6 /* Development.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Development.xctestplan; sourceTree = "<group>"; };
 		2A3BAAEB251A94FE009EABF6 /* SignUpCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCredentials.swift; sourceTree = "<group>"; };
 		2A3BAAFF251AB030009EABF6 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		2A3BAB03251AB114009EABF6 /* LogInCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInCredentials.swift; sourceTree = "<group>"; };
 		2A3BAB08251B3556009EABF6 /* CredentialsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsViewModel.swift; sourceTree = "<group>"; };
+		2A6BAD75251E10B400AFBD05 /* FemaleTickBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FemaleTickBox.swift; sourceTree = "<group>"; };
+		2A6BAD79251E113600AFBD05 /* MaleTickBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaleTickBox.swift; sourceTree = "<group>"; };
+		2A6BAD7D251E11C000AFBD05 /* GenderTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderTextField.swift; sourceTree = "<group>"; };
+		2A6BAD81251E125500AFBD05 /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
+		2A6BAD87251E12F900AFBD05 /* EmailTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailTextField.swift; sourceTree = "<group>"; };
 		2AAACA06251C89CA00EF0134 /* String+RegEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+RegEx.swift"; sourceTree = "<group>"; };
 		2AAACA11251CC04D00EF0134 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		2AAACA21251CD10900EF0134 /* UserDefaultsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsProtocol.swift; sourceTree = "<group>"; };
@@ -287,6 +295,11 @@
 			isa = PBXGroup;
 			children = (
 				2A3BAA5E251A1B12009EABF6 /* CredentialsInput.swift */,
+				2A6BAD87251E12F900AFBD05 /* EmailTextField.swift */,
+				2A6BAD81251E125500AFBD05 /* PasswordTextField.swift */,
+				2A6BAD7D251E11C000AFBD05 /* GenderTextField.swift */,
+				2A6BAD75251E10B400AFBD05 /* FemaleTickBox.swift */,
+				2A6BAD79251E113600AFBD05 /* MaleTickBox.swift */,
 			);
 			path = TextFields;
 			sourceTree = "<group>";
@@ -345,7 +358,6 @@
 			isa = PBXGroup;
 			children = (
 				2A3BAAA0251A3B63009EABF6 /* Gender.swift */,
-				2A3BAAB6251A88FA009EABF6 /* NetworkEndpoint.swift */,
 				2A3BAAFF251AB030009EABF6 /* NetworkError.swift */,
 			);
 			path = Enums;
@@ -563,10 +575,12 @@
 			files = (
 				2A3BAA49251A10EA009EABF6 /* StartingLogoItem.swift in Sources */,
 				2A3BAAA9251A3FE3009EABF6 /* Gender+Codable.swift in Sources */,
+				2A6BAD88251E12F900AFBD05 /* EmailTextField.swift in Sources */,
 				2A3BAA43251A0C9E009EABF6 /* CredentialsView.swift in Sources */,
 				2AAACA22251CD10900EF0134 /* UserDefaultsProtocol.swift in Sources */,
 				2A3BAA332519FD4E009EABF6 /* Image+Name.swift in Sources */,
 				2A3BAAEC251A94FE009EABF6 /* SignUpCredentials.swift in Sources */,
+				2A6BAD82251E125500AFBD05 /* PasswordTextField.swift in Sources */,
 				2A3BAA86251A31EA009EABF6 /* ProfilePhotoItem.swift in Sources */,
 				2A3BA9FB2519F1B8009EABF6 /* ContentView.swift in Sources */,
 				2A3BAB04251AB114009EABF6 /* LogInCredentials.swift in Sources */,
@@ -585,13 +599,15 @@
 				2A3BAA65251A1BE9009EABF6 /* DividerCredentialsItem.swift in Sources */,
 				2A3BAAA1251A3B63009EABF6 /* Gender.swift in Sources */,
 				2A3BAA8A251A33E6009EABF6 /* ProfileCell.swift in Sources */,
-				2A3BAAB7251A88FA009EABF6 /* NetworkEndpoint.swift in Sources */,
 				2A3BAA7F251A2CF0009EABF6 /* ProfileView.swift in Sources */,
+				2A6BAD76251E10B400AFBD05 /* FemaleTickBox.swift in Sources */,
 				2A3BAA5F251A1B12009EABF6 /* CredentialsInput.swift in Sources */,
 				2AAACA2F251CD2F900EF0134 /* UserDefaultsService.swift in Sources */,
 				2A3BAAB3251A8843009EABF6 /* AuthRequest.swift in Sources */,
 				2AAACA2B251CD1CE00EF0134 /* UserDefaultsContainer.swift in Sources */,
 				2A3BAABE251A8BB7009EABF6 /* AuthRequestProtocol.swift in Sources */,
+				2A6BAD7E251E11C000AFBD05 /* GenderTextField.swift in Sources */,
+				2A6BAD7A251E113600AFBD05 /* MaleTickBox.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

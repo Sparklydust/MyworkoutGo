@@ -15,24 +15,24 @@ import SwiftUI
 /// opposite case.
 ///
 struct CredentialsView: View {
-
+  
   @EnvironmentObject var viewModel: CredentialsViewModel
-
+  
   var body: some View {
     ZStack(alignment: .center) {
       VStack {
         StartingLogoItem()
-
+        
         Spacer()
-
+        
         CredentialsInput()
-
+        
         CredentialsButtons()
           .padding(8)
       }
       .padding(.horizontal, 40)
       .animation(.spring(response: 0.5, dampingFraction: 0.55))
-
+      
       ActivityIndicator(isAnimating: viewModel.isLoading)
     }
     .allowsHitTesting(viewModel.isLoading ? false : true)
@@ -48,7 +48,7 @@ struct CredentialsView_Previews: PreviewProvider {
   static var previews: some View {
     Group {
       CredentialsView()
-
+      
       CredentialsView()
         .preferredColorScheme(.dark)
     }

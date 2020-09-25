@@ -11,20 +11,20 @@ import SwiftUI
 /// Item showing user photo with gradient background.
 ///
 struct ProfilePhotoItem: View {
-
+  
   @EnvironmentObject var viewModel: CredentialsViewModel
-
+  
   var body: some View {
     ZStack {
       Rectangle()
         .foregroundColor(.clear)
         .background(LinearGradient(gradient: Gradient(colors: [.accentColor, .purple$]),
                                    startPoint: .topLeading, endPoint: .bottomTrailing))
-
+      
       VStack {
         Text(Localized.profile)
           .font(.title)
-
+        
         viewModel.profilePicture
           .resizable()
           .frame(width: 120, height: 120, alignment: .center)

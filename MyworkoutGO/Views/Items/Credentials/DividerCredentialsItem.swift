@@ -11,7 +11,7 @@ import SwiftUI
 /// Credentials TextField divider with gradient
 ///
 struct DividerCredentialsItem: View {
-
+  
   var body: some View {
     Rectangle()
       .frame(height: 1)
@@ -26,7 +26,7 @@ struct DividerCredentialsItem_Previews: PreviewProvider {
   static var previews: some View {
     Group {
       DividerCredentialsItem()
-
+      
       DividerCredentialsItem()
         .preferredColorScheme(.dark)
     }
