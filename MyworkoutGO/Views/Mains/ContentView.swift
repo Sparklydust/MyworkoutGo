@@ -17,7 +17,7 @@ import SwiftUI
 ///
 struct ContentView: View {
 
-  @EnvironmentObject var viewModel: CredentialsViewModel
+  @ObservedObject var viewModel = CredentialsViewModel()
 
   var body: some View {
     ZStack {
@@ -34,6 +34,7 @@ struct ContentView: View {
         }
       }
     }
+    .environmentObject(viewModel)
   }
 }
 

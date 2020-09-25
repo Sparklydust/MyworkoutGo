@@ -42,6 +42,11 @@ struct ProfilePhotoItem: View {
 // MARK: - Previews
 struct ProfilePhotoItem_Previews: PreviewProvider {
   static var previews: some View {
-    ProfilePhotoItem()
+    Group {
+      ProfilePhotoItem()
+
+      ProfilePhotoItem()
+        .preferredColorScheme(.dark)
+    }
   }
 }

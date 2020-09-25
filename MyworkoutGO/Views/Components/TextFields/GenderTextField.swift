@@ -12,6 +12,9 @@ import SwiftUI
 /// between female and male.
 ///
 struct GenderTextField: View {
+
+  @EnvironmentObject var viewModel: CredentialsViewModel
+  
   var body: some View {
     VStack {
       HStack {
@@ -25,6 +28,7 @@ struct GenderTextField: View {
       }
       DividerCredentialsItem()
     }
+    .environmentObject(viewModel)
   }
 }
 

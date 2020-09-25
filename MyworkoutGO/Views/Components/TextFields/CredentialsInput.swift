@@ -33,6 +33,7 @@ struct CredentialsInput: View {
         }
       }
     }
+    .environmentObject(viewModel)
     .padding(.bottom, 24)
   }
 }

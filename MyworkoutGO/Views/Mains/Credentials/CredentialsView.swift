@@ -30,6 +30,7 @@ struct CredentialsView: View {
         CredentialsButtons()
           .padding(8)
       }
+      .environmentObject(viewModel)
       .padding(.horizontal, 40)
       .animation(.spring(response: 0.5, dampingFraction: 0.55))
       

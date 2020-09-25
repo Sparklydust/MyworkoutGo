@@ -13,7 +13,6 @@ struct MyworkoutGOApp: App {
   var body: some Scene {
     WindowGroup {
       ContentView()
-        .environmentObject(CredentialsViewModel())
     }
   }
 }
