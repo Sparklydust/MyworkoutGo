@@ -21,10 +21,10 @@ struct ProfileView: View {
       
       List {
         ProfileCell(title: Localized.email,
-                    text: Text(viewModel.email))
+                    text: Text(viewModel.user.email))
         
         ProfileCell(title: Localized.gender,
-                    text: viewModel.gender == .male
+                    text: viewModel.user.gender == .male
                       ? Text(Localized.male)
                       : Text(Localized.female))
       }

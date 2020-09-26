@@ -17,7 +17,7 @@ struct EmailTextField: View {
   var body: some View {
     VStack {
       TextField(Localized.emailAddress,
-                text: $viewModel.email)
+                text: $viewModel.user.email)
         .textContentType(.emailAddress)
         .autocapitalization(.none)
         .padding(.horizontal, 16)

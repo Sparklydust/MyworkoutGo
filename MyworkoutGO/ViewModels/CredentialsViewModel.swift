@@ -15,8 +15,12 @@ final class CredentialsViewModel: ObservableObject {
 
   private var subscriptions = Set<AnyCancellable>()
 
+  // User
+  @ObservedObject var user = User()
+  @Published var profilePicture = Image.profile
+
   // UI levers
-  @Published var isLoggedIn = UserDefaultsService.shared.isLoggedIn
+  @Published var isLoggedIn = false
   @Published var showLogInSignUp = false
   @Published var showLogIn = false
   @Published var showSignUp = false
@@ -30,12 +34,6 @@ final class CredentialsViewModel: ObservableObject {
   @Published var logoTitle = Localized.appName
   @Published var logoLabel = Localized.enterEmail
   @Published var nextButtonName = Localized.next
-
-  // User inputs
-  @Published var email = UserDefaultsService.shared.userEmail
-  @Published var gender = UserDefaultsService.shared.userGender
-  @Published var password = String()
-  @Published var profilePicture = Image.profile
 }
 
 // MARK: - Publishers/Subscribers
@@ -98,8 +96,8 @@ extension CredentialsViewModel {
     nextButtonName = Localized.next
     logoTitle = Localized.appName
     logoLabel = Localized.enterEmail
-    email = String()
-    password = String()
+    user.email = String()
+    user.password = String()
     femaleSelected = false
     maleSelected = false
   }
@@ -112,7 +110,7 @@ extension CredentialsViewModel {
   func readUserEmailInput() {
     $showLogInSignUp
       .filter { !$0 }
-      .combineLatest($email)
+      .combineLatest(user.$email)
       .map { [weak self] _, email -> Bool in
         guard let self = self else { return true }
         return self.isValid(email) }
@@ -149,7 +147,7 @@ extension CredentialsViewModel {
   ///
   func continueCredentialsFlow(value: [String]) {
     for v in value {
-      if v == email {
+      if v == user.email {
         setupLogInView()
       }
       else {
@@ -200,7 +198,7 @@ extension CredentialsViewModel {
   func readUserLogInInput() {
     $showLogIn
       .filter { $0 }
-      .combineLatest($email, $password)
+      .combineLatest(user.$email, user.$password)
       .map { _, email, password -> Bool in
         guard email.isValidEmailFormat(),
               password != String() else { return true }
@@ -218,8 +216,8 @@ extension CredentialsViewModel {
     guard showLogIn else { return }
     isLoading = true
 
-    let credentials = LogInCredentials(email: email,
-                                       password: password)
+    let credentials = LogInCredentials(email: user.email,
+                                       password: user.password)
 
     AuthRequest.shared.logIn(credentials)
       .sink(
@@ -264,7 +262,7 @@ extension CredentialsViewModel {
   func readUserSignUpInput() {
     $showSignUp
       .filter { $0 }
-      .combineLatest($email, $password, $gender)
+      .combineLatest(user.$email, user.$password, user.$gender)
       .map { _, email, password, gender -> Bool in
         guard email.isValidEmailFormat(),
               password != String(),
@@ -283,9 +281,9 @@ extension CredentialsViewModel {
     guard showSignUp else { return }
     isLoading = true
 
-    let credentials = SignUpCredentials(email: email,
-                                        password: password,
-                                        gender: gender)
+    let credentials = SignUpCredentials(email: user.email,
+                                        password: user.password,
+                                        gender: user.gender)
 
     AuthRequest.shared.signUp(credentials)
       .sink(
@@ -312,8 +310,8 @@ extension CredentialsViewModel {
   ///     - value: User data comming from the back end.
   ///
   func performAPISignUpActions(on credentials: SignUpCredentials, with value: User) {
-    if credentials.email != "registered@email.com" &&
-        gender != .unknow {
+    if credentials.email != "registered@email.com"
+        && user.gender != .unknow {
       userCredentialsSaved(value)
       profilePicture = .profile
     }
@@ -333,7 +331,7 @@ extension CredentialsViewModel {
       maleGenderSelected()
       return
     default:
-      self.gender = .unknow
+      self.user.gender = .unknow
     }
   }
 
@@ -343,10 +341,10 @@ extension CredentialsViewModel {
     femaleSelected.toggle()
     maleSelected = false
     if femaleSelected {
-      gender = .female
+      user.gender = .female
     }
     else {
-      gender = .unknow
+      user.gender = .unknow
     }
   }
 
@@ -356,16 +354,25 @@ extension CredentialsViewModel {
     maleSelected.toggle()
     femaleSelected = false
     if maleSelected {
-      gender = .male
+      user.gender = .male
     }
     else {
-      gender = .unknow
+      user.gender = .unknow
     }
   }
 }
 
 // MARK: - UserDefaults
 extension CredentialsViewModel {
+  /// Fetch saved application state for the user to reconnect
+  /// with the same settings.
+  ///
+  func fetchUserDefaults() {
+      user.email = UserDefaultsService.shared.userEmail
+      user.gender = UserDefaultsService.shared.userGender
+      isLoggedIn = UserDefaultsService.shared.isLoggedIn
+  }
+
   /// Save values when user enter the app to user defaults and
   /// set Publisher to this values.
   ///
@@ -397,13 +404,10 @@ extension CredentialsViewModel {
   ///
   func retrieveUserDefaultsValues() {
     isLoggedIn = UserDefaultsService.shared.isLoggedIn
-    email = UserDefaultsService.shared.userEmail
-    gender = UserDefaultsService.shared.userGender
+    user.email = UserDefaultsService.shared.userEmail
+    user.gender = UserDefaultsService.shared.userGender
   }
-}
 
-// MARK: - Profile View
-extension CredentialsViewModel {
   /// User logged out from the Profile tab view and sent back to startup view.
   ///
   func userLoggedOutSaved() {
@@ -423,8 +427,8 @@ extension CredentialsViewModel {
   ///
   func resetUserDefaultsAssociatedVariables() {
     isLoggedIn = UserDefaultsService.shared.isLoggedIn
-    email = UserDefaultsService.shared.userEmail
-    gender = UserDefaultsService.shared.userGender
+    user.email = UserDefaultsService.shared.userEmail
+    user.gender = UserDefaultsService.shared.userGender
   }
 }
 
@@ -454,7 +458,7 @@ extension CredentialsViewModel {
     Alert(title: Text(Localized.error),
                  message: Text(Localized.wrongCredentials),
                  dismissButton: .default(Text(Localized.ok)) {
-                  self.password = String()
+                  self.user.password = String()
                  })
   }
 
@@ -465,8 +469,8 @@ extension CredentialsViewModel {
     Alert(title: Text(Localized.error),
                  message: Text(Localized.emailAlreadyUsed),
                  dismissButton: .default(Text(Localized.ok)) {
-                  self.email = String()
-                  self.password = String()
+                  self.user.email = String()
+                  self.user.password = String()
                  })
   }
 

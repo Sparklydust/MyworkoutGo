@@ -18,7 +18,7 @@ struct PasswordTextField: View {
   var body: some View {
     VStack {
       SecureField(Localized.password,
-                  text: $viewModel.password)
+                  text: $viewModel.user.password)
         .textContentType(viewModel.showLogIn
                           ? .password
                           : .newPassword)
