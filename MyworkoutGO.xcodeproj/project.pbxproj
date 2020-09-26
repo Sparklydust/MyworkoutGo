@@ -35,6 +35,7 @@
 		2A3BAB00251AB030009EABF6 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAAFF251AB030009EABF6 /* NetworkError.swift */; };
 		2A3BAB04251AB114009EABF6 /* LogInCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAB03251AB114009EABF6 /* LogInCredentials.swift */; };
 		2A3BAB09251B3556009EABF6 /* CredentialsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAB08251B3556009EABF6 /* CredentialsViewModel.swift */; };
+		2A5B270625200A1B0053395B /* NetworkEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5B270525200A1B0053395B /* NetworkEndpoint.swift */; };
 		2A6BAD76251E10B400AFBD05 /* FemaleTickBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BAD75251E10B400AFBD05 /* FemaleTickBox.swift */; };
 		2A6BAD7A251E113600AFBD05 /* MaleTickBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BAD79251E113600AFBD05 /* MaleTickBox.swift */; };
 		2A6BAD7E251E11C000AFBD05 /* GenderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BAD7D251E11C000AFBD05 /* GenderTextField.swift */; };
@@ -93,6 +94,7 @@
 		2A3BAAFF251AB030009EABF6 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		2A3BAB03251AB114009EABF6 /* LogInCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInCredentials.swift; sourceTree = "<group>"; };
 		2A3BAB08251B3556009EABF6 /* CredentialsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsViewModel.swift; sourceTree = "<group>"; };
+		2A5B270525200A1B0053395B /* NetworkEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEndpoint.swift; sourceTree = "<group>"; };
 		2A6BAD75251E10B400AFBD05 /* FemaleTickBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FemaleTickBox.swift; sourceTree = "<group>"; };
 		2A6BAD79251E113600AFBD05 /* MaleTickBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaleTickBox.swift; sourceTree = "<group>"; };
 		2A6BAD7D251E11C000AFBD05 /* GenderTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderTextField.swift; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 			children = (
 				2A3BAAA0251A3B63009EABF6 /* Gender.swift */,
 				2A3BAAFF251AB030009EABF6 /* NetworkError.swift */,
+				2A5B270525200A1B0053395B /* NetworkEndpoint.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -584,6 +587,7 @@
 				2A3BAA86251A31EA009EABF6 /* ProfilePhotoItem.swift in Sources */,
 				2A3BA9FB2519F1B8009EABF6 /* ContentView.swift in Sources */,
 				2A3BAB04251AB114009EABF6 /* LogInCredentials.swift in Sources */,
+				2A5B270625200A1B0053395B /* NetworkEndpoint.swift in Sources */,
 				2A3BAA54251A14DE009EABF6 /* CredentialsButtons.swift in Sources */,
 				2A3BAA6E251A1F06009EABF6 /* Localized.swift in Sources */,
 				2A3BAB00251AB030009EABF6 /* NetworkError.swift in Sources */,
