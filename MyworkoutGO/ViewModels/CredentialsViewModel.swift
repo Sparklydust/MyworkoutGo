@@ -221,12 +221,8 @@ extension CredentialsViewModel {
 
     AuthRequest.shared.logIn(credentials)
       .sink(
-        receiveCompletion: { [weak self] _ in
-          guard let self = self else { return }
-          self.isLoading = false },
-        receiveValue: { [weak self] value in
-          guard let self = self else { return }
-          self.performAPILogInActions(on: credentials, with: value) })
+        receiveCompletion: { print($0) },
+        receiveValue: { print($0.token) })
       .store(in: &subscriptions)
   }
 

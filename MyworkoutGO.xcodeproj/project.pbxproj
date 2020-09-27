@@ -36,6 +36,7 @@
 		2A3BAB04251AB114009EABF6 /* LogInCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAB03251AB114009EABF6 /* LogInCredentials.swift */; };
 		2A3BAB09251B3556009EABF6 /* CredentialsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3BAB08251B3556009EABF6 /* CredentialsViewModel.swift */; };
 		2A5B270625200A1B0053395B /* NetworkEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5B270525200A1B0053395B /* NetworkEndpoint.swift */; };
+		2A5B270E25207A900053395B /* HTTPMethodString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5B270D25207A900053395B /* HTTPMethodString.swift */; };
 		2A6BAD76251E10B400AFBD05 /* FemaleTickBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BAD75251E10B400AFBD05 /* FemaleTickBox.swift */; };
 		2A6BAD7A251E113600AFBD05 /* MaleTickBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BAD79251E113600AFBD05 /* MaleTickBox.swift */; };
 		2A6BAD7E251E11C000AFBD05 /* GenderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BAD7D251E11C000AFBD05 /* GenderTextField.swift */; };
@@ -95,6 +96,7 @@
 		2A3BAB03251AB114009EABF6 /* LogInCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInCredentials.swift; sourceTree = "<group>"; };
 		2A3BAB08251B3556009EABF6 /* CredentialsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsViewModel.swift; sourceTree = "<group>"; };
 		2A5B270525200A1B0053395B /* NetworkEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEndpoint.swift; sourceTree = "<group>"; };
+		2A5B270D25207A900053395B /* HTTPMethodString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethodString.swift; sourceTree = "<group>"; };
 		2A6BAD75251E10B400AFBD05 /* FemaleTickBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FemaleTickBox.swift; sourceTree = "<group>"; };
 		2A6BAD79251E113600AFBD05 /* MaleTickBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaleTickBox.swift; sourceTree = "<group>"; };
 		2A6BAD7D251E11C000AFBD05 /* GenderTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderTextField.swift; sourceTree = "<group>"; };
@@ -362,6 +364,7 @@
 				2A3BAAA0251A3B63009EABF6 /* Gender.swift */,
 				2A3BAAFF251AB030009EABF6 /* NetworkError.swift */,
 				2A5B270525200A1B0053395B /* NetworkEndpoint.swift */,
+				2A5B270D25207A900053395B /* HTTPMethodString.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -602,6 +605,7 @@
 				2A3BAAAD251A4BF1009EABF6 /* Published+Codable.swift in Sources */,
 				2A3BAA65251A1BE9009EABF6 /* DividerCredentialsItem.swift in Sources */,
 				2A3BAAA1251A3B63009EABF6 /* Gender.swift in Sources */,
+				2A5B270E25207A900053395B /* HTTPMethodString.swift in Sources */,
 				2A3BAA8A251A33E6009EABF6 /* ProfileCell.swift in Sources */,
 				2A3BAA7F251A2CF0009EABF6 /* ProfileView.swift in Sources */,
 				2A6BAD76251E10B400AFBD05 /* FemaleTickBox.swift in Sources */,

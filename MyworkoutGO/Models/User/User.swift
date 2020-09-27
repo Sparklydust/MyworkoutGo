@@ -7,6 +7,32 @@
 
 import SwiftUI
 
+
+final class UserData: ObservableObject, Codable {
+
+  @Published var token: String
+  @Published var user: UserPublic
+
+  init(token: String, user: UserPublic) {
+    self.token = token
+    self.user = user
+  }
+}
+
+final class UserPublic: ObservableObject, Codable, Identifiable {
+
+  var id: UUID?
+
+  @Published var email: String
+  @Published var gender: Int
+
+  init(email: String = String(),
+       gender: Int = 0) {
+    self.email = email
+    self.gender = gender
+  }
+}
+
 //  MARK: User
 /// MyworkoutGO user definition.
 ///
