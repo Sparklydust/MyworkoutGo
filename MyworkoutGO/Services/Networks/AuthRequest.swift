@@ -23,6 +23,9 @@ final class AuthRequest {
   }
 
   // MARK: - Dispatch Queues
+  let signUpQueue = DispatchQueue(
+    label: "signUpQueue", qos: .userInitiated,
+    attributes: .concurrent, autoreleaseFrequency: .inherit, target: .main)
   let logInQueue = DispatchQueue(
     label: "logInQueue", qos: .userInitiated,
     attributes: .concurrent, autoreleaseFrequency: .inherit, target: .main)
@@ -32,15 +35,21 @@ final class AuthRequest {
 }
 
 extension AuthRequest {
-  func signUp(_ credentials: SignUpCredentials) -> AnyPublisher<User, NetworkError> {
+  func signUp(_ credentials: SignUpCredentials) -> AnyPublisher<UserData, NetworkError> {
 
-    let user = User(email: credentials.email,
-                    password: credentials.password,
-                    gender: credentials.gender)
+    let url = NetworkEndpoint.signUp.url
+    let body = signUpBody(with: credentials)
+    let urlRequest = signUpRequestSetup(url: url, body: body)
 
-    return Just(user)
-      .delay(for: .seconds(1), scheduler: DispatchQueue.main)
-      .mapError { _ -> NetworkError in }
+    return authSession
+      .dataTaskPublisher(for: urlRequest)
+      .receive(on: signUpQueue)
+      .map(\.data)
+      .decode(
+        type: UserData.self,
+        decoder: JSONDecoder())
+      .mapError { error -> NetworkError in
+        self.switchNetworkError(error) }
       .eraseToAnyPublisher()
   }
 
@@ -48,7 +57,7 @@ extension AuthRequest {
 
     let url = NetworkEndpoint.logIn.url
     let body = logInBody(with: credentials)
-    let urlRequest = loginRequestSetup(url: url, body: body)
+    let urlRequest = logInRequestSetup(url: url, body: body)
 
     return authSession
       .dataTaskPublisher(for: urlRequest)
@@ -81,6 +90,16 @@ extension AuthRequest {
 
 // MARK: - Request Bodies
 extension AuthRequest {
+  /// Sign up body for http request.
+  ///
+  func signUpBody(with credentials: SignUpCredentials) -> [String: Any] {
+    [
+      "email": credentials.email,
+      "password": credentials.password,
+      "gender": credentials.gender == .male ? 0 : 1,
+    ] as [String : Any]
+  }
+
   /// Log in encoded body for http request.
   ///
   func logInBody(with credentials: LogInCredentials) -> String {
@@ -95,6 +114,27 @@ extension AuthRequest {
 extension AuthRequest {
   /// Request settings with url and body.
   ///
+  /// Setup the necessary parameters to make a sign up
+  /// network request during authentification.
+  ///
+  /// - Parameters:
+  ///     - url: the corresponding log in url
+  ///     - body: The needed json body for the request
+  /// - Returns: URL method request with settings
+  ///
+  func signUpRequestSetup(url: URL,
+                          body: [String: Any]) -> URLRequest {
+
+    var urlRequest = URLRequest(url: url)
+    urlRequest.httpMethod = HTTPMethodString.POST.rawValue
+    urlRequest.setValue("application/json",
+                        forHTTPHeaderField: "Content-Type")
+    urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: body)
+    return urlRequest
+  }
+
+  /// Request settings with url and body.
+  ///
   /// Setup the necessary parameters to make the
   /// right network request during authentification.
   ///
@@ -103,7 +143,7 @@ extension AuthRequest {
   ///     - body: The needed json encoded body for the request
   /// - Returns: URL method request with settings
   ///
-  func loginRequestSetup(url: URL, body: String) -> URLRequest {
+  func logInRequestSetup(url: URL, body: String) -> URLRequest {
     var urlRequest = URLRequest(url: url)
     urlRequest.httpMethod = HTTPMethodString.POST.rawValue
     urlRequest.setValue("Basic \(body)", forHTTPHeaderField: "Authorization")

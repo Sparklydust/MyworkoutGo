@@ -23,9 +23,11 @@ final class User: UserProtocol, ObservableObject, Codable, Identifiable {
   @Published var password: String
   @Published var gender: Gender
 
-  init(email: String = String(),
+  init(id: UUID = UUID(),
+       email: String = String(),
        password: String = String(),
        gender: Gender = .unknow) {
+    self.id = id
     self.email = email
     self.password = password
     self.gender = gender

@@ -124,7 +124,7 @@ extension CredentialsViewModel {
   /// If it does, we trigger the log in flow otherwise, the sign up one.
   ///
   func checkIfUserEmailExist() {
-    guard !showSignUp && !showLogIn else { return }
+    guard !showSignUp && !showLogIn && !isLoggedIn else { return }
     isLoading = true
 
     AuthRequest.shared.fetchAccounts()
@@ -245,6 +245,7 @@ extension CredentialsViewModel {
       UserDefaultsService.shared.isLoggedIn = true
       UserDefaultsService.shared.userToken = data.token
       UserDefaultsService.shared.userEmail = data.user.email
+      UserDefaultsService.shared.userGender = data.user.gender == 0 ? .male : .female
     }
   }
 }
@@ -281,12 +282,15 @@ extension CredentialsViewModel {
 
     AuthRequest.shared.signUp(credentials)
       .sink(
-        receiveCompletion: { [weak self] _ in
+        receiveCompletion: { [weak self] completion in
           guard let self = self else { return }
-          self.isLoading = false },
+          self.handle(completion) },
         receiveValue: { [weak self] value in
           guard let self = self else { return }
-          self.performAPISignUpActions(on: credentials, with: value) })
+          DispatchQueue.main.async {
+            self.isLoggedIn = true
+          }
+          print("🥶 \(value.token)") })
       .store(in: &subscriptions)
   }
 

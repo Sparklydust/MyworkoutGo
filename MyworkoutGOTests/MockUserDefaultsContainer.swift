@@ -15,4 +15,7 @@ class MockUserDefaultsContainer: UserDefaultsProtocol {
   var userEmail = String()
 
   var userGender: Gender?
+
+
+  var userToken = String()
 }
