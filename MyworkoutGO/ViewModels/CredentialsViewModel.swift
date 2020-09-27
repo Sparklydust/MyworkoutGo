@@ -221,33 +221,27 @@ extension CredentialsViewModel {
 
     AuthRequest.shared.logIn(credentials)
       .sink(
-        receiveCompletion: { print($0) },
-        receiveValue: { print($0.token) })
+        receiveCompletion: { [weak self] completion in
+          guard let self = self else { return }
+          self.handle(completion) },
+        receiveValue: { [weak self] data in
+          guard let self = self else { return }
+          self.performAPILogInActions(with: data) })
       .store(in: &subscriptions)
   }
 
   /// Performing actions on value coming from the API.
   ///
-  /// If user exist in data base, log in actions are trigger and user can
-  /// access the app. If wrong credentials are entered, an Alert is triggered
-  /// letting the user know about it.
-  /// Normally, with real Network calls, error are handled in the
-  /// receiveCompletion block. As it is a fake call, I handled them in
-  /// the receivedValue instead.
-  ///
   /// - Parameters:
-  ///     - credentials: User log in credentials filled in the app.
-  ///     - value: User data comming from the back end.
+  ///     - data: user data coming from the api as public
   ///
-  func performAPILogInActions(on credentials: LogInCredentials, with value: User) {
-    if credentials.email == value.email
-        && credentials.password == value.password {
-      userCredentialsSaved(value)
-      profilePicture = .nilsOlav
+  func performAPILogInActions(with data: UserData) {
+    DispatchQueue.main.async {
+      UserDefaultsService.shared.isLoggedIn = true
+      UserDefaultsService.shared.userToken = data.token
     }
-    else {
-      showCredentialsAlert = true
-    }
+    isLoggedIn = true
+    profilePicture = .nilsOlav
   }
 }
 
@@ -430,6 +424,24 @@ extension CredentialsViewModel {
 
 // MARK: - Alerts
 extension CredentialsViewModel {
+  /// Handle the completion coming from a network request with a finished
+  /// action and failure set as NetworkError.
+  ///
+  func handle(_ completion: Subscribers.Completion<NetworkError>) {
+    switch completion {
+    case .failure(let error):
+      switch error {
+      case .emailAlreadyUsed:
+        return
+      case .wrongCredentials:
+        showCredentialsAlert = true
+        return
+      }
+    case .finished:
+      isLoading = false
+      return
+    }
+  }
   /// Show alert with classic dismiss button if user credentials are invalid.
   ///
   /// Depending on weither the user log in or sign up, a proper alert is shown

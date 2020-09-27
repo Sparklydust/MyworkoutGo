@@ -19,6 +19,7 @@ class UserDefaultsContainer {
     static let isLoggedIn = "isLoggedIn"
     static let userEmail = "userEmail"
     static let userGender = "userGender"
+    static let userToken = "userToken"
   }
 
   init() {
@@ -50,7 +51,7 @@ extension UserDefaultsContainer: UserDefaultsProtocol {
   var userGender: Gender? {
     get {
       guard let savedValue = UserDefaults.standard.object(forKey: Key.userGender)
-              as? Data else {  return nil }
+              as? Data else { return nil }
 
       let decodedValue = try? JSONDecoder().decode(Gender.self, from: savedValue)
       return decodedValue
@@ -58,6 +59,15 @@ extension UserDefaultsContainer: UserDefaultsProtocol {
     set {
       let encodedValue = try? JSONEncoder().encode(newValue)
       UserDefaults.standard.setValue(encodedValue, forKey: Key.userGender)
+    }
+  }
+
+  var userToken: String {
+    get {
+      return UserDefaults.standard.string(forKey: Key.userToken) ?? String()
+    }
+    set {
+      UserDefaults.standard.setValue(newValue, forKey: Key.userToken)
     }
   }
 }

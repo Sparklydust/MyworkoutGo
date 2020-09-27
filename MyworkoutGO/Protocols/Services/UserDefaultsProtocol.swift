@@ -21,4 +21,8 @@ protocol UserDefaultsProtocol {
   /// Tracking user gender when logged in.
   ///
   var userGender: Gender? { get set }
+
+  /// User token coming from the api call.
+  ///
+  var userToken: String { get set }
 }

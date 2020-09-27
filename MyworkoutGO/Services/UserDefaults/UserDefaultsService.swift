@@ -54,4 +54,15 @@ extension UserDefaultsService {
       userDefaultsContainer.userGender = newValue
     }
   }
+
+  /// Traking user public when logged in.
+  ///
+  var userToken: String {
+    get {
+      return userDefaultsContainer.userToken
+    }
+    set {
+      userDefaultsContainer.userToken = newValue
+    }
+  }
 }
