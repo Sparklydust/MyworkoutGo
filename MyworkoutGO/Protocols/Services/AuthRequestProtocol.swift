@@ -19,7 +19,7 @@ protocol AuthRequestProtocol {
   ///     - credentials: user email, password and gender.
   /// - Returns: <User, Never>
   ///
-  func signUp(_ credentials: SignUpCredentials) -> AnyPublisher<User, NetworkError>
+  func signUp(_ credentials: SignUpCredentials) -> AnyPublisher<UserData, NetworkError>
 
   /// Log in user to his/her account.
   ///
@@ -30,7 +30,7 @@ protocol AuthRequestProtocol {
   ///     - credentials: user email and password.
   /// - Returns: <String, Never>
   ///
-  func logIn(_ credentials: LogInCredentials) -> AnyPublisher<User, NetworkError>
+  func logIn(_ credentials: LogInCredentials) -> AnyPublisher<UserData, NetworkError>
 
   /// Fetch all user email accounts.
   ///
@@ -39,5 +39,5 @@ protocol AuthRequestProtocol {
   ///
   /// - Returns: <[String], Never>
   ///
-  func fetchAccounts() -> AnyPublisher<[String], Never>
+  func fetchAccounts() -> AnyPublisher<[UserPublic], NetworkError>
 }

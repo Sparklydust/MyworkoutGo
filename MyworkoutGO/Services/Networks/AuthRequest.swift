@@ -14,7 +14,7 @@ import Combine
 /// Auth requests being made within this application are being
 /// set here. The authSession initializer is for testing purposes.
 ///
-final class AuthRequest {
+final class AuthRequest: AuthRequestProtocol {
   static let shared = AuthRequest()
 
   private var authSession: URLSession

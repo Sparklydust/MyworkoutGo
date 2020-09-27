@@ -124,7 +124,7 @@ extension CredentialsViewModel {
   /// If it does, we trigger the log in flow otherwise, the sign up one.
   ///
   func checkIfUserEmailExist() {
-    guard !showSignUp && !showLogIn && !isLoggedIn else { return }
+    guard !showSignUp && !showLogIn else { return }
     isLoading = true
 
     AuthRequest.shared.fetchAccounts()
@@ -149,6 +149,7 @@ extension CredentialsViewModel {
       for i in data {
         if i.email == self.user.email {
           self.setupLogInView()
+          break
         }
         else {
           self.setupSignUpView()
@@ -242,10 +243,7 @@ extension CredentialsViewModel {
     profilePicture = .nilsOlav
     isLoggedIn = true
     DispatchQueue.main.async {
-      UserDefaultsService.shared.isLoggedIn = true
-      UserDefaultsService.shared.userToken = data.token
-      UserDefaultsService.shared.userEmail = data.user.email
-      UserDefaultsService.shared.userGender = data.user.gender == 0 ? .male : .female
+      self.saveUserCredentials(data)
     }
   }
 }
@@ -285,12 +283,9 @@ extension CredentialsViewModel {
         receiveCompletion: { [weak self] completion in
           guard let self = self else { return }
           self.handle(completion) },
-        receiveValue: { [weak self] value in
+        receiveValue: { [weak self] data in
           guard let self = self else { return }
-          DispatchQueue.main.async {
-            self.isLoggedIn = true
-          }
-          print("🥶 \(value.token)") })
+          self.performAPISignUpActions(on: data)})
       .store(in: &subscriptions)
   }
 
@@ -299,22 +294,15 @@ extension CredentialsViewModel {
   /// If user create a new account with an unknown email, sign up actions are
   /// trigger and user can access the app. If wrong credentials are entered,
   /// an Alert is triggered letting the user know about it.
-  /// Normally, with real Network calls, error are handled in the
-  /// receiveCompletion block. As it is a fake call, I handled them in
-  /// the receivedValue instead.
   ///
   /// - Parameters:
-  ///     - credentials: User log in credentials filled in the app.
-  ///     - value: User data comming from the back end.
+  ///     - data: data coming from the api call.
   ///
-  func performAPISignUpActions(on credentials: SignUpCredentials, with value: User) {
-    if credentials.email != "registered@email.com"
-        && user.gender != .unknow {
-      userCredentialsSaved(value)
-      profilePicture = .profile
-    }
-    else {
-      showCredentialsAlert = true
+  func performAPISignUpActions(on data: UserData) {
+    profilePicture = .profile
+    isLoggedIn = true
+    DispatchQueue.main.async {
+      self.saveUserCredentials(data)
     }
   }
 
@@ -365,7 +353,7 @@ extension CredentialsViewModel {
   /// Fetch saved application state for the user to reconnect
   /// with the same settings.
   ///
-  func fetchUserDefaults() {
+  func fetchUserDefaultsValues() {
       user.email = UserDefaultsService.shared.userEmail
       user.gender = UserDefaultsService.shared.userGender
       isLoggedIn = UserDefaultsService.shared.isLoggedIn
@@ -380,9 +368,9 @@ extension CredentialsViewModel {
   ///  - Parameters:
   ///     - value: User data comming from the back end.
   ///
-  func userCredentialsSaved(_ value: User) {
-    saveInUserDefaults(value)
-    retrieveUserDefaultsValues()
+  func saveUserCredentials(_ data: UserData) {
+    saveInUserDefaults(data)
+    setUserDefaultsValues(data)
   }
 
   /// Save values when user logged in to user defaults.
@@ -392,18 +380,18 @@ extension CredentialsViewModel {
   ///  - Parameters:
   ///     - value: User data comming from the back end.
   ///
-  func saveInUserDefaults(_ value: User) {
+  func saveInUserDefaults(_ data: UserData) {
     UserDefaultsService.shared.isLoggedIn = true
-    UserDefaultsService.shared.userEmail = value.email
-    UserDefaultsService.shared.userGender = value.gender
+    UserDefaultsService.shared.userToken = data.token
+    UserDefaultsService.shared.userEmail = data.user.email
+    UserDefaultsService.shared.userGender = data.user.gender == 0 ? .male : .female
   }
 
-  /// Retrieving the values saved in UserDefaults and set it to Publishers variables.
+  /// Set the values saved in UserDefaults to Publishers variables.
   ///
-  func retrieveUserDefaultsValues() {
-    isLoggedIn = UserDefaultsService.shared.isLoggedIn
-    user.email = UserDefaultsService.shared.userEmail
-    user.gender = UserDefaultsService.shared.userGender
+  func setUserDefaultsValues(_ data: UserData) {
+    user.email = data.user.email
+    user.gender = data.user.gender == 0 ? .male : .female
   }
 
   /// User logged out from the Profile tab view and sent back to startup view.
@@ -416,17 +404,19 @@ extension CredentialsViewModel {
   /// Resetting UserDefaults by deleting values when user logged out.
   ///
   func resetUserDefaultsValues() {
-    UserDefaultsService.shared.isLoggedIn = false
-    UserDefaultsService.shared.userEmail = String()
-    UserDefaultsService.shared.userGender = .unknow
+    DispatchQueue.main.async {
+      UserDefaultsService.shared.isLoggedIn = false
+      UserDefaultsService.shared.userEmail = String()
+      UserDefaultsService.shared.userGender = .unknow
+    }
   }
 
   /// Resetting UserDefaults associated variables when user logged out.
   ///
   func resetUserDefaultsAssociatedVariables() {
-    isLoggedIn = UserDefaultsService.shared.isLoggedIn
-    user.email = UserDefaultsService.shared.userEmail
-    user.gender = UserDefaultsService.shared.userGender
+    isLoggedIn = false
+    user.email = String()
+    user.gender = .unknow
   }
 }
 
