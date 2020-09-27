@@ -26,6 +26,9 @@ final class AuthRequest {
   let logInQueue = DispatchQueue(
     label: "logInQueue", qos: .userInitiated,
     attributes: .concurrent, autoreleaseFrequency: .inherit, target: .main)
+  let fetchAccountsQueue = DispatchQueue(
+    label: "fetchAccountsQueue", qos: .userInitiated,
+    attributes: .concurrent, autoreleaseFrequency: .inherit, target: .main)
 }
 
 extension AuthRequest {
@@ -59,12 +62,19 @@ extension AuthRequest {
       .eraseToAnyPublisher()
   }
 
-  func fetchAccounts() -> AnyPublisher<[String], Never> {
+  func fetchAccounts() -> AnyPublisher<[UserPublic], NetworkError> {
 
-    let users = ["registered@email.com"]
+    let url = NetworkEndpoint.accounts.url
 
-    return Just(users)
-      .delay(for: .seconds(1), scheduler: DispatchQueue.main)
+    return authSession
+      .dataTaskPublisher(for: url)
+      .receive(on: fetchAccountsQueue)
+      .map(\.data)
+      .decode(
+        type: [UserPublic].self,
+        decoder: JSONDecoder())
+      .mapError { error -> NetworkError in
+        self.switchNetworkError(error) }
       .eraseToAnyPublisher()
   }
 }

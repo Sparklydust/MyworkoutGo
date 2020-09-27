@@ -22,6 +22,7 @@ enum NetworkEndpoint {
   case logIn
   case signUp
   case account
+  case accounts
 
   /// Fetching MyworkoutGO endpoint.
   ///
@@ -33,6 +34,8 @@ enum NetworkEndpoint {
       return NetworkEndpoint.baseURL.appendingPathComponent("signup")
     case .account:
       return NetworkEndpoint.baseURL.appendingPathComponent("account")
+    case .accounts:
+      return NetworkEndpoint.baseURL.appendingPathComponent("accounts")
     }
   }
 }

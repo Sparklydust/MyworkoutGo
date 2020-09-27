@@ -125,17 +125,16 @@ extension CredentialsViewModel {
   ///
   func checkIfUserEmailExist() {
     guard !showSignUp && !showLogIn else { return }
-    showLogInSignUp = true
     isLoading = true
 
     AuthRequest.shared.fetchAccounts()
       .sink(
-        receiveCompletion: { [weak self] _ in
+        receiveCompletion: { [weak self] completion in
           guard let self = self else { return }
-          self.isLoading = false },
-        receiveValue: { [weak self] value in
+          self.handle(completion) },
+        receiveValue: { [weak self] data in
           guard let self = self else { return }
-          self.continueCredentialsFlow(value: value) })
+          self.continueCredentialsFlow(data: data) })
       .store(in: &subscriptions)
   }
 
@@ -145,13 +144,15 @@ extension CredentialsViewModel {
   ///
   /// - Parameter value: users email accounts from data base.
   ///
-  func continueCredentialsFlow(value: [String]) {
-    for v in value {
-      if v == user.email {
-        setupLogInView()
-      }
-      else {
-        setupSignUpView()
+  func continueCredentialsFlow(data: [UserPublic]) {
+    DispatchQueue.main.async {
+      for i in data {
+        if i.email == self.user.email {
+          self.setupLogInView()
+        }
+        else {
+          self.setupSignUpView()
+        }
       }
     }
   }
@@ -161,6 +162,7 @@ extension CredentialsViewModel {
   func setupLogInView() {
     showLogIn = true
     showSignUp = false
+    showLogInSignUp = true
     logoTitle = Localized.welcomeBack
     logoLabel = Localized.enterPassword
     nextButtonName = Localized.logIn
@@ -171,6 +173,7 @@ extension CredentialsViewModel {
   func setupSignUpView() {
     showSignUp = true
     showLogIn = false
+    showLogInSignUp = true
     logoTitle = Localized.createAccount
     logoLabel = Localized.fillSignUpForm
     nextButtonName = Localized.signUp
@@ -236,12 +239,13 @@ extension CredentialsViewModel {
   ///     - data: user data coming from the api as public
   ///
   func performAPILogInActions(with data: UserData) {
+    profilePicture = .nilsOlav
+    isLoggedIn = true
     DispatchQueue.main.async {
       UserDefaultsService.shared.isLoggedIn = true
       UserDefaultsService.shared.userToken = data.token
+      UserDefaultsService.shared.userEmail = data.user.email
     }
-    isLoggedIn = true
-    profilePicture = .nilsOlav
   }
 }
 
@@ -430,6 +434,7 @@ extension CredentialsViewModel {
   func handle(_ completion: Subscribers.Completion<NetworkError>) {
     switch completion {
     case .failure(let error):
+      isLoading = false
       switch error {
       case .emailAlreadyUsed:
         return
