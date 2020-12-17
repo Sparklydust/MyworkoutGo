@@ -19,7 +19,7 @@ struct PasswordTextField: View {
     VStack {
       SecureField(Localized.password,
                   text: $viewModel.user.password)
-        .textContentType(viewModel.showLogIn
+        .textContentType(viewModel.showLogIn.value
                           ? .password
                           : .newPassword)
         .autocapitalization(.none)

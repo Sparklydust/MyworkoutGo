@@ -17,13 +17,15 @@ final class CredentialsViewModel: ObservableObject {
 
   // User
   @ObservedObject var user = User()
+  
   @Published var profilePicture = Image.profile
 
   // UI levers
-  @Published var isLoggedIn = false
-  @Published var showLogInSignUp = false
-  @Published var showLogIn = false
-  @Published var showSignUp = false
+  var isLoggedIn = CurrentValueSubject<Bool, Never>(false)
+  var showLogInSignUp = CurrentValueSubject<Bool, Never>(false)
+  var showLogIn = CurrentValueSubject<Bool, Never>(false)
+  var showSignUp = CurrentValueSubject<Bool, Never>(false)
+
   @Published var femaleSelected = false
   @Published var maleSelected = false
   @Published var disableButton = false
@@ -89,9 +91,9 @@ extension CredentialsViewModel {
   /// Trigger actions to reset views to the starting credentials one.
   ///
   func goBackToStartingView() {
-    showLogInSignUp = false
-    showSignUp = false
-    showLogIn = false
+    showLogInSignUp.send(false)
+    showSignUp.send(false)
+    showLogIn.send(false)
   }
 
   /// Trigger actions to reset labels to the starting credentials view.
@@ -112,12 +114,13 @@ extension CredentialsViewModel {
   /// Read user email text field input.
   ///
   func readUserEmailInput() {
-    $showLogInSignUp
+    showLogInSignUp
       .filter { !$0 }
       .combineLatest(user.$email)
       .map { [weak self] _, email -> Bool in
         guard let self = self else { return true }
         return self.isValid(email) }
+      .removeDuplicates()
       .assign(to: &$disableButton)
   }
 
@@ -127,7 +130,7 @@ extension CredentialsViewModel {
   /// If it does, we trigger the log in flow otherwise, the sign up one.
   ///
   func checkIfUserEmailExist() {
-    guard !showSignUp && !showLogIn else { return }
+    guard !showSignUp.value && !showLogIn.value else { return }
     isLoading = true
 
     AuthRequest.shared.fetchAccounts()
@@ -164,9 +167,9 @@ extension CredentialsViewModel {
   /// Trigger action to setup log in view and change labels accordingly.
   ///
   func setupLogInView() {
-    showLogIn = true
-    showSignUp = false
-    showLogInSignUp = true
+    showLogIn.send(true)
+    showSignUp.send(false)
+    showLogInSignUp.send(true)
     logoTitle = Localized.welcomeBack
     logoLabel = Localized.enterPassword
     nextButtonName = Localized.logIn
@@ -175,9 +178,9 @@ extension CredentialsViewModel {
   /// Trigger action to setup sign up view and change labels accordingly.
   ///
   func setupSignUpView() {
-    showSignUp = true
-    showLogIn = false
-    showLogInSignUp = true
+    showLogIn.send(false)
+    showSignUp.send(true)
+    showLogInSignUp.send(true)
     logoTitle = Localized.createAccount
     logoLabel = Localized.fillSignUpForm
     nextButtonName = Localized.signUp
@@ -203,13 +206,14 @@ extension CredentialsViewModel {
   /// Read user email and password text field inputs.
   ///
   func readUserLogInInput() {
-    $showLogIn
+    showLogIn
       .filter { $0 }
       .combineLatest(user.$email, user.$password)
       .map { _, email, password -> Bool in
         guard email.isValidEmailFormat(),
               password != String() else { return true }
         return false }
+      .removeDuplicates()
       .assign(to: &$disableButton)
   }
 
@@ -219,7 +223,7 @@ extension CredentialsViewModel {
   /// an account. Trigger an Alert otherwise.
   ///
   func LogInUserCredentials() {
-    guard showLogIn else { return }
+    guard showLogIn.value else { return }
     isLoading = true
 
     let credentials = LogInCredentials(email: user.email,
@@ -243,7 +247,7 @@ extension CredentialsViewModel {
   ///
   func performAPILogInActions(with data: UserData) {
     profilePicture = .nilsOlav
-    isLoggedIn = true
+    isLoggedIn.send(true)
     DispatchQueue.main.async {
       self.saveUserCredentials(data)
     }
@@ -255,7 +259,7 @@ extension CredentialsViewModel {
   /// Read user email, password text field and gender inputs.
   ///
   func readUserSignUpInput() {
-    $showSignUp
+    showSignUp
       .filter { $0 }
       .combineLatest(user.$email, user.$password, user.$gender)
       .map { _, email, password, gender -> Bool in
@@ -263,6 +267,7 @@ extension CredentialsViewModel {
               password != String(),
               gender != .unknow else { return true }
         return false }
+      .removeDuplicates()
       .assign(to: &$disableButton)
   }
 
@@ -272,7 +277,7 @@ extension CredentialsViewModel {
   /// created an account before. Trigger an alert otherwise.
   ///
   func SignUpUserCredentials() {
-    guard showSignUp else { return }
+    guard showSignUp.value else { return }
     isLoading = true
 
     let credentials = SignUpCredentials(email: user.email,
@@ -301,7 +306,7 @@ extension CredentialsViewModel {
   ///
   func performAPISignUpActions(on data: UserData) {
     profilePicture = .profile
-    isLoggedIn = true
+    isLoggedIn.send(true)
     DispatchQueue.main.async {
       self.saveUserCredentials(data)
     }
@@ -355,9 +360,9 @@ extension CredentialsViewModel {
   /// with the same settings.
   ///
   func fetchUserDefaultsValues() {
-      user.email = UserDefaultsService.shared.userEmail
-      user.gender = UserDefaultsService.shared.userGender
-      isLoggedIn = UserDefaultsService.shared.isLoggedIn
+    user.email = UserDefaultsService.shared.userEmail
+    user.gender = UserDefaultsService.shared.userGender
+    isLoggedIn.value = UserDefaultsService.shared.isLoggedIn
   }
 
   /// Save values when user enter the app to user defaults and
@@ -415,7 +420,7 @@ extension CredentialsViewModel {
   /// Resetting UserDefaults associated variables when user logged out.
   ///
   func resetUserDefaultsAssociatedVariables() {
-    isLoggedIn = false
+    isLoggedIn.send(false)
     user.email = String()
     user.gender = .unknow
   }
@@ -451,9 +456,9 @@ extension CredentialsViewModel {
   ///
   func credentialsAlertView() -> Alert {
     switch true {
-    case showLogIn:
+    case showLogIn.value:
       return logInAlert()
-    case showSignUp:
+    case showSignUp.value:
       return signUpAlert()
     default:
       return internalAlert()

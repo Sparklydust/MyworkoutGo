@@ -21,7 +21,7 @@ struct ContentView: View {
 
   var body: some View {
     ZStack {
-      if !viewModel.isLoggedIn {
+      if !viewModel.isLoggedIn.value {
         CredentialsView()
       }
       else {

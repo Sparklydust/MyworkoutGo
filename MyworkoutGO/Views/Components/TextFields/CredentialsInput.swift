@@ -23,12 +23,12 @@ struct CredentialsInput: View {
 
       EmailTextField()
 
-      if viewModel.showLogInSignUp {
-        if viewModel.showLogIn || viewModel.showSignUp {
+      if viewModel.showLogInSignUp.value {
+        if viewModel.showLogIn.value || viewModel.showSignUp.value {
           PasswordTextField()
         }
 
-        if viewModel.showSignUp {
+        if viewModel.showSignUp.value {
           GenderTextField()
         }
       }
