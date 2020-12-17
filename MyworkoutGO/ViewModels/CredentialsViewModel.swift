@@ -34,6 +34,10 @@ final class CredentialsViewModel: ObservableObject {
   @Published var logoTitle = Localized.appName
   @Published var logoLabel = Localized.enterEmail
   @Published var nextButtonName = Localized.next
+
+  init() {
+    readUserInput()
+  }
 }
 
 // MARK: - Publishers/Subscribers
@@ -78,8 +82,8 @@ extension CredentialsViewModel {
   /// back to the startup view.
   ///
   func logOutAction() {
-    cancelButtonAction()
     userLoggedOutSaved()
+    cancelButtonAction()
   }
 
   /// Trigger actions to reset views to the starting credentials one.
@@ -114,8 +118,7 @@ extension CredentialsViewModel {
       .map { [weak self] _, email -> Bool in
         guard let self = self else { return true }
         return self.isValid(email) }
-      .assign(to: \.disableButton, on: self)
-      .store(in: &subscriptions)
+      .assign(to: &$disableButton)
   }
 
   /// Trigger a network call to retrieve all user accounts.
@@ -207,8 +210,7 @@ extension CredentialsViewModel {
         guard email.isValidEmailFormat(),
               password != String() else { return true }
         return false }
-      .assign(to: \.disableButton, on: self)
-      .store(in: &subscriptions)
+      .assign(to: &$disableButton)
   }
 
   /// Log in user if account already exist.
@@ -261,8 +263,7 @@ extension CredentialsViewModel {
               password != String(),
               gender != .unknow else { return true }
         return false }
-      .assign(to: \.disableButton, on: self)
-      .store(in: &subscriptions)
+      .assign(to: &$disableButton)
   }
 
   /// Sign up user if account has never been created before.

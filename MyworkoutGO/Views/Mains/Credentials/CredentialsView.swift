@@ -37,7 +37,6 @@ struct CredentialsView: View {
       ActivityIndicator(isAnimating: viewModel.isLoading)
     }
     .allowsHitTesting(viewModel.isLoading ? false : true)
-    .onAppear { viewModel.readUserInput() }
     .alert(isPresented: $viewModel.showCredentialsAlert) {
       self.viewModel.credentialsAlertView()
     }
